@@ -236,7 +236,7 @@ Prefab:
     - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
         type: 2}
       propertyPath: joyRightAxisAccel
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 96503063050656664, guid: 50ee216c09990a54996c7a9b109606c2,
         type: 2}
@@ -272,6 +272,29 @@ Prefab:
         type: 2}
       propertyPath: IsDebug
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: underLine
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: HighjumpPower
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: ZoneInjumpPower
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}

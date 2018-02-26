@@ -205,36 +205,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: underLine
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: joyRightAxisAccel
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1158252713267410, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670424414697132, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
-      propertyPath: m_TagString
-      value: weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 1158252713267410, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
   m_IsPrefabParent: 0
