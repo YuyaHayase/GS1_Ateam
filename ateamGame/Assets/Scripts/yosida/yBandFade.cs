@@ -43,9 +43,7 @@ public class yBandFade : MonoBehaviour {
         band.color = new Color(band.color.r, band.color.g, band.color.b, 0);
         bandText.color = new Color(bandText.color.r, bandText.color.g, bandText.color.b, 0);
 
-        maxWave = waveManagement.WaveMax;
-        startText = "START Wave " + "1 / " + maxWave;
-        bandText.text = startText;
+        StartCoroutine("MaxWave");
     }
 
     // Update is called once per frame
@@ -101,5 +99,16 @@ public class yBandFade : MonoBehaviour {
         flgFade = false;
         flgFadeIn = false;
         flgFadeOut = true;
+    }
+
+    IEnumerator MaxWave()//Start内での処理を遅らせるため
+    {
+        enabled = false;
+        yield return new WaitForEndOfFrame();//1フレーム遅らせる
+        maxWave = waveManagement.WaveMax;
+        startText = "START Wave " + "1 / " + maxWave;
+        bandText.text = startText;
+        enabled = true;
+        yield break;
     }
 }

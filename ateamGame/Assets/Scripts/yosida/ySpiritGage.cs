@@ -7,8 +7,12 @@ public class ySpiritGage : MonoBehaviour
 {
 
     Image spiritGage;
+    [SerializeField,Header("精神ゲージが増えいていくフレームカウント")]
+    int frameCountAdd = 5;
+    [SerializeField,Header("")]
+    int frameCountMinus = 5;
 
-    [SerializeField]
+    [SerializeField,Header("精神ゲージのfillAmountが減っていく値")]
     float minus = 0.01f;
 
     bool flgAdd = true;//精神ゲージが少しずつ増えていく
@@ -25,26 +29,33 @@ public class ySpiritGage : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButton(1))
-        {
-            SpiritGageAdd();
-        }
+            flgMinus = true;
         else
-        {
             flgAdd = true;
-        }
+
 
         if (flgAdd)
-        {
-            if (Time.frameCount % 20 == 0)
-                spiritGage.fillAmount += minus;
-        }
+            SpiritGageAdd();
+
+
+        if (flgMinus)
+            SpiritGageMinus();
+
     }
 
     public void SpiritGageAdd()
     {
         flgAdd = false;
 
-        if (Time.frameCount % 20 == 0)
+        if (Time.frameCount % frameCountAdd == 0)
+            spiritGage.fillAmount += minus;
+    }
+
+    private void SpiritGageMinus()
+    {
+        flgMinus = false;
+
+        if (Time.frameCount % frameCountMinus == 0)
             spiritGage.fillAmount -= minus;
     }
 }
