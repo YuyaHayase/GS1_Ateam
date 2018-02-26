@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114394853874933526}
   - component: {fileID: 114095471736112052}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -257,8 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   underLine: -4
-  HighjumpPower: 0.5
-  ZoneInjumpPower: 0.08
+  HighjumpPower: 0.8
+  ZoneInjumpPower: 0.13
   Gravity: 9.8
   joyLeftAxisComp: 5
   joyRightAxisAccel: 1.5
