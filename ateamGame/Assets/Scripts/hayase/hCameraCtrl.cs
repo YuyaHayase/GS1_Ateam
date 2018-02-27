@@ -33,32 +33,36 @@ public class hCameraCtrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        try
+        if (hKeyConfigSettings.ParallaxEffect)
         {
-            // 集中時
-            if (hKeyConfig.GetKey("Zone")) {
-                zone = true;
-                if (Vignette.intensity < vMax) Vignette.intensity += Time.deltaTime / vAccel;
-                MotionsBlur.blurAmount = 0.8f;
-            }
-
-            // 集中が終わったとき
-            if (hKeyConfig.GetKeyUp("Zone"))
+            try
             {
-                zone = false;
-                MotionsBlur.blurAmount = 0.6f;
-            }
+                // 集中時
+                if (hKeyConfig.GetKey("Zone"))
+                {
+                    zone = true;
+                    if (Vignette.intensity < vMax) Vignette.intensity += Time.deltaTime / vAccel;
+                    MotionsBlur.blurAmount = 0.8f;
+                }
 
-            // ビネットの自動解除
-            if (Vignette.intensity > 0.1f && !zone)
+                // 集中が終わったとき
+                if (hKeyConfig.GetKeyUp("Zone"))
+                {
+                    zone = false;
+                    MotionsBlur.blurAmount = 0.6f;
+                }
+
+                // ビネットの自動解除
+                if (Vignette.intensity > 0.1f && !zone)
+                {
+                    Vignette.intensity -= Time.deltaTime / vAccel;
+
+                }
+            }
+            catch (Exception e)
             {
-                Vignette.intensity -= Time.deltaTime / vAccel;
-                               
+                print(e.Message);
             }
         }
-        catch (Exception e)
-        {
-            print(e.Message);
-        }
-	}
+    }
 }

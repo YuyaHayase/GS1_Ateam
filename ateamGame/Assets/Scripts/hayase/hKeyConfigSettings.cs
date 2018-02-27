@@ -26,13 +26,18 @@ public class hKeyConfigSettings : MonoBehaviour {
     public static int mo;
 
     [SerializeField, Tooltip("選択等をさせるための決定ボタン"), Header("選択等をさせるための決定ボタン")]
-    private hJoyStickReceiver.PlayStationContoller JoyStick_Submit = hJoyStickReceiver.PlayStationContoller.Square;
+    private hJoyStickReceiver.PlayStationContoller JoyStick_Submit;
 
     // コントローラで決定ボタンを押した際の一瞬でボタンが決定されないようにするためのやつ
     int ctrlmode = 0;
-    [SerializeField]
+
+    // 選択されたオブジェクト
+    [SerializeField, Header("選択されたオブジェクト(特に入れなくてもいいです)")]
     GameObject SelectedObj;
 
+    // 視差効果を使用するか
+    public static bool ParallaxEffect;
+   
     // 初期化
     public void Init()
     {
@@ -40,9 +45,7 @@ public class hKeyConfigSettings : MonoBehaviour {
         {
 #if UNITY_EDITOR
             FilePath = Application.dataPath + "/Scenes/hayase/" + Application.unityVersion + ".txt";
-#endif
-
-#if UNITY_STANDALONE
+#else
             FilePath = Application.dataPath + "/" + Application.unityVersion + ".txt";
 #endif
             jsr = new hJoyStickReceiver();
@@ -68,6 +71,7 @@ public class hKeyConfigSettings : MonoBehaviour {
                 hKeyConfig.Config["Jump"] = ar[0].ToString();
                 hKeyConfig.Config["Zone"] = ar[1].ToString();
                 mo = int.Parse(ar[2].ToString());
+                ParallaxEffect = bool.Parse(ar[3].ToString());
             }
 
 
@@ -80,7 +84,9 @@ public class hKeyConfigSettings : MonoBehaviour {
             hKeyConfig.Config["Zone"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.L1);
         }
 
+        // デバック用の表示
         Debug.Log("JumpButton: " + hKeyConfig.Config["Jump"] + ", ZoneButton: " + hKeyConfig.Config["Zone"]);
+
         hKeyConfig.Config["Submit"] = jsr.GetPlayBtn(JoyStick_Submit);
         SetDisp("JumpBtn", hKeyConfig.Config["Jump"]);
         SetDisp("ZoneBtn", hKeyConfig.Config["Zone"]);
@@ -112,8 +118,10 @@ public class hKeyConfigSettings : MonoBehaviour {
         Modes();
 
         // セレクトの初期設定
-        SelectedObj = GameObject.Find("JumpBtn");
+        if(SelectedObj == null) SelectedObj = GameObject.Find("JumpBtn");
         EventSystem.current.SetSelectedGameObject(SelectedObj);
+
+        GameObject.Find("Parallax Btn").GetComponent<Toggle>().isOn = ParallaxEffect;
 
         Debug.Log(FilePath);
 
@@ -134,12 +142,12 @@ public class hKeyConfigSettings : MonoBehaviour {
         }
 
         /* キーパッドでどこを選択しているかの表示したりするやつ
-         * 決定ボタン( Playstation4 DualShock でいう □ボタンとしてる )
+         * 決定ボタン( Playstation4 DualShock でいう ○ボタンとしてる )
          * でUIのジャンプボタンを選択させ、
          * ジャンプボタン( Playstation4 DualShock でいう ×ボタン)
          * で選択を解除している。
         */
-        if (hKeyConfig.GetKeyDown("Submit"))
+        if (hKeyConfig.GetKeyDown("Submit") || Input.GetAxis("Vertical") != 0)
         {
             if(EventSystem.current.currentSelectedGameObject != null)
             SelectedObj = EventSystem.current.currentSelectedGameObject;
@@ -169,6 +177,12 @@ public class hKeyConfigSettings : MonoBehaviour {
     }
 
     // タイトルへ
+    /* タイトルに移行するときファイルに書き込む
+     * ジャンプキーのボタン
+     * 集中時のキーのボタン
+     * PlayStationのコントローラかその他のコントローラか
+     * ファイルの保存パス
+    */
     public void ToTitle()
     {
         FileStream fs = new FileStream(FilePath, FileMode.OpenOrCreate);
@@ -176,6 +190,7 @@ public class hKeyConfigSettings : MonoBehaviour {
         sw.WriteLine(hKeyConfig.Config["Jump"]);
         sw.WriteLine(hKeyConfig.Config["Zone"]);
         sw.WriteLine(mo);
+        sw.WriteLine(ParallaxEffect);
         sw.WriteLine(FilePath);
         sw.Close();
         fs.Close();
@@ -198,5 +213,12 @@ public class hKeyConfigSettings : MonoBehaviour {
         }
 
         GameObject.Find("CtrlTxt").GetComponent<Text>().text = s;
+    }
+
+    // 視差効果を使用するか否か
+    public void ParallaxIs()
+    {
+        ParallaxEffect = (true == ParallaxEffect) ? false : true;
+        print(ParallaxEffect);
     }
 }
