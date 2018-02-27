@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class hPlayerMove : MonoBehaviour {
 
@@ -123,5 +124,21 @@ public class hPlayerMove : MonoBehaviour {
         // 集中時以外武器の判定を消す
         if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift)) && (RightX != 0 || RightY != 0 )) _child.SetActive(true);
         else _child.SetActive(false);
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        try
+        {
+            if (col.tag == "wall")
+            {
+                if (col.transform.position.x < transform.position.x) transform.Translate(new Vector3(0.35f, 0, 0));
+                if (col.transform.position.x > transform.position.x) transform.Translate(new Vector3(-0.35f, 0, 0));
+            }
+        }
+        catch (Exception e)
+        {
+            print(e.Message + " : 'wall' タグを追加してみたら多分治るかもしれません");
+        }
     }
 }

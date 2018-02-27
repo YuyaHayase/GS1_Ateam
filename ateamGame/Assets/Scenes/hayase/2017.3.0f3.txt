@@ -1,0 +1,5 @@
+joystick button 1
+joystick button 4
+0
+True
+C:/Users/root/Documents/GS1_Ateam/ateamGame/Assets/Scenes/hayase/2017.3.0f3.txt

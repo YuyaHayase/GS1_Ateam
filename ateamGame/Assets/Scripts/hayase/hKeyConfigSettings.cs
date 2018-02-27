@@ -64,6 +64,8 @@ public class hKeyConfigSettings : MonoBehaviour {
                 // ファイルが有っても中身が無いときのとりあえず入れとくやつ
                 hKeyConfig.Config["Jump"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.Cross);
                 hKeyConfig.Config["Zone"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.L1);
+                mo = 0;
+                ParallaxEffect = true;
             }
             else
             {
