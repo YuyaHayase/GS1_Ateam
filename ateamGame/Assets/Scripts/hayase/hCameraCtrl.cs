@@ -29,7 +29,13 @@ public class hCameraCtrl : MonoBehaviour {
         // アタッチされてないなら代入する
         if (Vignette == null) Vignette = GetComponent<VignetteAndChromaticAberration>();
         if(MotionsBlur == null) MotionsBlur = GetComponent<MotionBlur>();
-	}
+
+        if (!hKeyConfigSettings.ParallaxEffect)
+        {
+            GetComponent<VignetteAndChromaticAberration>().enabled = false;
+            GetComponent<MotionBlur>().enabled = false;
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
