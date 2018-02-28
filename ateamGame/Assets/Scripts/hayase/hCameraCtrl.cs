@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityStandardAssets.ImageEffects;
+using UnityEngine.SceneManagement;
 
 public class hCameraCtrl : MonoBehaviour {
 
@@ -108,5 +109,11 @@ public class hCameraCtrl : MonoBehaviour {
         {
             print(e.Message + " : 'wall' タグを追加してみたら多分治るかもしれません");
         }
+    }
+
+    public void MoveScene(string SceneName)
+    {
+        print("SceneMoved: " + SceneName);
+        SceneManager.LoadScene(SceneName);
     }
 }

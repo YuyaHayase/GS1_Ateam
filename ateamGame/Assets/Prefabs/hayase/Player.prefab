@@ -286,7 +286,7 @@ MonoBehaviour:
   HighjumpPower: 0.8
   ZoneInjumpPower: 0.13
   Gravity: 9.8
-  joyLeftAxisComp: 5
+  joyLeftAxisComp: 4
   joyRightAxisAccel: 7
 --- !u!212 &212700169776755174
 SpriteRenderer:
