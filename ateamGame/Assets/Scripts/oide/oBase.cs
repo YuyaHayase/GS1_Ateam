@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class oBase : MonoBehaviour {
+public class oBase : MonoBehaviour
+{
     GameObject player;
     public int i;
     float angle;
     int reflection;
     // Use this for initialization
-    void Start () {
+
+    void Start()
+    {
         player = GameObject.Find("Player");
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
     public int Playerposition(Vector3 enemypos)//移動方向を取得
     {
         player = GameObject.Find("Player");
@@ -35,71 +40,48 @@ public class oBase : MonoBehaviour {
         angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;//角度を求める
         return angle;//値(角度)を返す 
     }
-    public float Reflection(int angleFlg,int reflect,float angle)//壁反射
-    {
+
+    public float Reflection(int angleFlg, int reflect, float angle)//壁反射
+    {//                          壁　　　　　　入射角　　　　当たったときの角度
         switch (angleFlg)
         {
             case 1://天井
-                if (reflect == 3)
-                {
-                    angle= 270;
-                }
-                else
-                {
-                    angle *= -1;//角度に-を掛ける
-                }
+                angle *= -1;//角度に-を掛ける
                 break;
             case 2://床
-                if (reflect == 3)
-                {
-                    angle = 90;
-                }
-                else
-                {
-                    angle *= -1;//角度に-を掛ける
-                }
+                angle *= -1;//角度に-を掛ける
                 break;
             case 3://左の壁
-                if (reflect == 3)
+                switch (reflect)//入射角
                 {
-                    angle = 0;
-                }
-                else
-                {
-                    switch (reflect)//入射角
-                    {
-                        case 1://180度以下
-
-                            angle = Mathf.Abs(angle + 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                        case 2://180度より大きい
-                            angle = Mathf.Abs(angle - 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                    }
+                    case 1://180度以下
+                        angle = Mathf.Abs(angle + 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 2://180度より大きい
+                        angle = Mathf.Abs(angle - 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 3:
+                        angle = 0;
+                        break;
                 }
                 break;
             case 4://右の壁
-                if (reflect == 3)
+                switch (reflect)//入射角
                 {
-                    angle = 180;
-                }
-                else
-                {
-                    switch (reflect)//入射角
-                    {
-                        case 1://180度以下
-
-                            angle = Mathf.Abs(angle + 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                        case 2://180度より大きい
-                            angle = Mathf.Abs(angle - 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                    }
-                }
+                    case 1://180度以下
+                        angle = Mathf.Abs(angle + 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 2://180度より大きい
+                        angle = Mathf.Abs(angle - 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 3:
+                        angle = 180;
+                        break;
+                 }
                 break;
         }
         return angle;
