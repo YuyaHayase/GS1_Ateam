@@ -9,6 +9,7 @@ public class oBase : MonoBehaviour
     float angle;
     int reflection;
     // Use this for initialization
+
     void Start()
     {
         player = GameObject.Find("Player");
@@ -19,6 +20,7 @@ public class oBase : MonoBehaviour
     {
 
     }
+
     public int Playerposition(Vector3 enemypos)//移動方向を取得
     {
         player = GameObject.Find("Player");
@@ -38,6 +40,7 @@ public class oBase : MonoBehaviour
         angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;//角度を求める
         return angle;//値(角度)を返す 
     }
+
     public float Reflection(int angleFlg, int reflect, float angle)//壁反射
     {//                          壁　　　　　　入射角　　　　当たったときの角度
         switch (angleFlg)
@@ -78,7 +81,7 @@ public class oBase : MonoBehaviour
                     case 3:
                         angle = 180;
                         break;
-                }
+                 }
                 break;
         }
         return angle;
