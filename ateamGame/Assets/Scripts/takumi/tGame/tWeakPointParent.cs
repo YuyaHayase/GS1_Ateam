@@ -11,6 +11,12 @@ public class tWeakPointParent : MonoBehaviour
     [SerializeField, HeaderAttribute("弱点の向き(0左,1右,2下,3上)")]
     private int weakpointDir;
 
+    //吉田プログラム
+    bool flgWeakness = false;
+    public bool FlgWeakness
+    {
+        get { return flgWeakness; }
+    }
     //private 
     void Start()
     {
@@ -43,11 +49,13 @@ public class tWeakPointParent : MonoBehaviour
             {//弱点ヒット、処理をここに
                 Debug.Log("弱点HIT");
                 _yHpgage.EnemyDamage(30);
+                flgWeakness = true;
             }
             else
             {//通常ヒット、処理をここに
                 Debug.Log("通常ヒット");
                 _yHpgage.EnemyDamage(10);
+                flgWeakness = false;
             }
         }
     }

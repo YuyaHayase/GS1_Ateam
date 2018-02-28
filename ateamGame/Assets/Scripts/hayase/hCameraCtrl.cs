@@ -37,8 +37,11 @@ public class hCameraCtrl : MonoBehaviour {
         if (Vignette == null) Vignette = GetComponent<VignetteAndChromaticAberration>();
         if(MotionsBlur == null) MotionsBlur = GetComponent<MotionBlur>();
 
+        // けーコンフィグの宣言
         hKeyConfigSettings hk = new hKeyConfigSettings();
         hk.Init();
+
+        // 視差効果がオンになっているか
         print(hKeyConfigSettings.ParallaxEffect);
         if (false == hKeyConfigSettings.ParallaxEffect)
         {
@@ -76,26 +79,29 @@ public class hCameraCtrl : MonoBehaviour {
                     Vignette.intensity -= Time.deltaTime / vAccel;
 
                 }
-
-                if (CameraMove)
-                {
-                    // カメラ移動
-                    Vector2 pPos = Player.transform.position;
-                    transform.position = new Vector3(pPos.x / 3.5f, pPos.y / 10.0f + 11.82f, -10);
-                }
-                else
-                {
-                    if ((wall.transform.position - Player.transform.position).magnitude > 15) CameraMove = true;
-                    print((wall.transform.position - Player.transform.position).magnitude);
-                }
             }
             catch (Exception e)
             {
                 print(e.Message);
             }
         }
+
+        // カメラ移動, 壁に当たったらカメラ移動を止める
+        // 壁から一定距離離れたら再開する
+        if (CameraMove)
+        {
+            Vector2 pPos = Player.transform.position;
+            transform.position = new Vector3(pPos.x / 3.5f, pPos.y / 10.0f + 11.82f, -10);
+        }
+        else
+        {
+            if ((wall.transform.position - Player.transform.position).magnitude > 15) CameraMove = true;
+            print((wall.transform.position - Player.transform.position).magnitude);
+        }
+
     }
 
+    // 壁に当たったら
     void OnTriggerEnter2D(Collider2D col)
     {
         try
@@ -111,6 +117,7 @@ public class hCameraCtrl : MonoBehaviour {
         }
     }
 
+    // シーン移動
     public void MoveScene(string SceneName)
     {
         print("SceneMoved: " + SceneName);
