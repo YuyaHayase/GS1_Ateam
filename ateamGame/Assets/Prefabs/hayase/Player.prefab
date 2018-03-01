@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4632320127924054}
   - component: {fileID: 114394853874933526}
   - component: {fileID: 114095471736112052}
+  - component: {fileID: 61612085118257132}
   m_Layer: 0
-  m_Name: PlayerTest
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +43,7 @@ GameObject:
   - component: {fileID: 96503063050656664}
   m_Layer: 0
   m_Name: humer
-  m_TagString: Untagged
+  m_TagString: weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158252713267410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4717479722521018}
   - {fileID: 4701261029646564}
@@ -139,6 +140,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!61 &61612085118257132
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1158252713267410}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5, y: 2.5}
+  m_EdgeRadius: 0
 --- !u!96 &96503063050656664
 TrailRenderer:
   serializedVersion: 2
@@ -256,12 +282,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1218c984c0b6e384e8a279f63071c4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underLine: -4
-  HighjumpPower: 0.5
-  ZoneInjumpPower: 0.08
+  underLine: 0.5
+  HighjumpPower: 0.8
+  ZoneInjumpPower: 0.13
   Gravity: 9.8
-  joyLeftAxisComp: 5
-  joyRightAxisAccel: 1.5
+  joyLeftAxisComp: 4
+  joyRightAxisAccel: 7
 --- !u!212 &212700169776755174
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -301,7 +327,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.9, y: 2.91}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

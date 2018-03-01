@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class hPlayerMove : MonoBehaviour {
 
@@ -57,10 +58,6 @@ public class hPlayerMove : MonoBehaviour {
 			t:時間(ジャンプしてからのフレーム数。)
 			g:重力加速度(9.8が一般的ですが、1ピクセル当たりの換算距離によります)
         */
-
-        // 集中時以外武器の判定を消す
-        if (hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift)) _child.SetActive(true);
-        else _child.SetActive(false);
         
         // ×ボタンが押されたら
         if (hKeyConfig.GetKey("Jump")) jumping=true;
@@ -95,6 +92,7 @@ public class hPlayerMove : MonoBehaviour {
         if (Input.GetAxis("Vertical") > 0.8f) jumping = true;
         if (Input.GetAxis("Horizontal") == 0) Axis.x = Input.GetAxis("The Cross Key LeftRight") / joyLeftAxisComp;
         else Axis.x = Input.GetAxis("Horizontal") / joyLeftAxisComp;
+        if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 4f;
         transform.position += new Vector3(Axis.x, py, 0);
 
         // アクシスの調整 右ステック
@@ -123,5 +121,25 @@ public class hPlayerMove : MonoBehaviour {
         // 右スティックが入力されてないなら
         if (RightX == 0 && RightY==0) _child.transform.rotation = Quaternion.AngleAxis(45,Vector3.forward);
         else _child.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rot * Mathf.Rad2Deg-90);
+
+        // 集中時以外武器の判定を消す
+        if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift)) && (RightX != 0 || RightY != 0 )) _child.SetActive(true);
+        else _child.SetActive(false);
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        try
+        {
+            if (col.tag == "wall")
+            {
+                if (col.transform.position.x < transform.position.x) transform.Translate(new Vector3(0.35f, 0, 0));
+                if (col.transform.position.x > transform.position.x) transform.Translate(new Vector3(-0.35f, 0, 0));
+            }
+        }
+        catch (Exception e)
+        {
+            print(e.Message + " : 'wall' タグを追加してみたら多分治るかもしれません");
+        }
     }
 }
