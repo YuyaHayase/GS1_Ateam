@@ -23,9 +23,16 @@ public class yHpgage : MonoBehaviour {
     [SerializeField, Header("赤ゲージのfillAmountが減っていく値")]
     float redGageDecrease = 0.01f;
 
+    float remaining, remainingRed;
+
 
     yEnemyManager enemyManager;
     yWaveManagement waveManagement;
+
+    public float Remaining
+    {
+        get { return remaining;}
+    }
 
     // Use this for initialization
     void Start () {
@@ -39,7 +46,7 @@ public class yHpgage : MonoBehaviour {
         waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
 
         //要はEnemyの時
-        if (parent.name != "Canvas")
+        if (parent.tag == "enemy")
         {
             //Enemyの時、親オブジェクトのスクリプトを取得
             enemyManager = parent.GetComponent<yEnemyManager>();
@@ -84,7 +91,7 @@ public class yHpgage : MonoBehaviour {
 
     private IEnumerator DamageCoroutine(int x)
     {
-        float remaining = ((float)hp - x) / maxHP;
+        remaining = ((float)hp - x) / maxHP;
         hp -= x;
         while (true)
         {
@@ -114,7 +121,7 @@ public class yHpgage : MonoBehaviour {
 
     IEnumerator ComboEnd()
     {
-        float remaining = redGage.fillAmount;
+        remainingRed = redGage.fillAmount;
 
         while (true)
         {

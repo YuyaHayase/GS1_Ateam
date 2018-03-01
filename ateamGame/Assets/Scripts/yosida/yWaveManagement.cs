@@ -98,7 +98,7 @@ public class yWaveManagement : MonoBehaviour {
 
                         if (i >= wholeNumber)//全ての敵が出現し終えたら(1～3Wave)
                             break;
-                        else if (enemyAppearanceTime[i - 1] == enemyAppearanceTime[i])//今作ったものと次作る秒数が一緒っだったらもう一度
+                        else if (enemyAppearanceTime[i - 1] == enemyAppearanceTime[i] && number > 0)//今作ったものと次作る秒数が一緒っだったらもう一度
                             continue;
                         else
                             break;
@@ -238,7 +238,7 @@ public class yWaveManagement : MonoBehaviour {
 
     }
 
-    private void MaxWave(int x)
+    private void MaxWave(int x)//Waveの最大数
     {
         for (int y = 1; y < csv.wave.Count; y++)
         {
@@ -254,11 +254,11 @@ public class yWaveManagement : MonoBehaviour {
 
     IEnumerator BossAppearance()
     {
-        yield return new WaitUntil(() => flgBoss);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitUntil(() => flgBoss);//flgBossがtrueになったとき
+        yield return new WaitForSeconds(1.0f);//1.0秒待つ
 
         yield return StartCoroutine("BossPerformance");//ボスが出てくる演出
-        print(i);
+
         yield return new WaitForSeconds(enemyAppearanceTime[i]);//ボス出現
         SpriteRenderer boss;
         for (int k = 0; k < enemyType.Length; k++)
