@@ -2,12 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+
 public class oBase : MonoBehaviour
 {
     GameObject player;
     public int i;
     float angle;
     int reflection;
+    float zone = 1.0f;
+    public float f;
+    public float enemySpeed
+    {
+        get
+        {
+            return zone;
+        }
+    }
     // Use this for initialization
 
     void Start()
@@ -15,11 +27,19 @@ public class oBase : MonoBehaviour
         player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+	
+	// Update is called once per frame
+	void Update () {
+        zone = f;
+        //if (hkeyConfig.GetKey("Zone"))
+        //{
+        //    zone = f;
+        //}
+        //else
+        //{
+        //    zone = 1.0f;
+        //}
+	}
 
     public int Playerposition(Vector3 enemypos)//移動方向を取得
     {
@@ -65,7 +85,8 @@ public class oBase : MonoBehaviour
                     case 3:
                         angle = 0;
                         break;
-                }
+
+                  }
                 break;
             case 4://右の壁
                 switch (reflect)//入射角
@@ -81,8 +102,7 @@ public class oBase : MonoBehaviour
                     case 3:
                         angle = 180;
                         break;
-                 }
-                break;
+                }
         }
         return angle;
     }
@@ -101,6 +121,10 @@ public class oBase : MonoBehaviour
             reflection = 2;
         }
         return reflection;
+    }
+    public float playerposition()
+    {
+        return player.transform.position.x;
     }
     void save()
     {

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212327060977939454}
   - component: {fileID: 61761029573770756}
   - component: {fileID: 50062949257822390}
-  - component: {fileID: 114544397267896006}
   - component: {fileID: 60198848294441216}
   - component: {fileID: 114146613817031358}
   m_Layer: 0
@@ -132,23 +131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f386b9b04821f74bb996277b40cb060, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114544397267896006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1401562657722060}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f59b42c2d38abd6468bbcf032916b52c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 1387245394759108, guid: 1ce66a23697c58b49b66ab4b33eb3831, type: 2}
-  angle: 0
-  min: 0
-  max: 60
-  way: 1
-  enemyMode: 1
 --- !u!212 &212327060977939454
 SpriteRenderer:
   m_ObjectHideFlags: 1

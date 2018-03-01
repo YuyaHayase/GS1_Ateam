@@ -9,10 +9,13 @@ public class oEnemyMove22 : MonoBehaviour {
     float f;//回転の数値、少しずつ大きくしていく
     float enemyMoveDistance = 0.0f;//移動距離、値が増えれば移動距離が多くなる
     public float x;
+    GameObject obj;//※必須
+    oBase mother;//※必須
     // Use this for initialization
     void Start () {
-		
-	}
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -33,8 +36,8 @@ public class oEnemyMove22 : MonoBehaviour {
                 {
                     if (f >= 0)//回転の大きさが0以上なら
                     {
-                        f -= 0.1f;//減らしていく
-                        enemyMoveDistance += x;//移動する値を増やしていく
+                        f -= 0.1f * mother.enemySpeed;//減らしていく
+                        enemyMoveDistance += x * mother.enemySpeed;//移動する値を増やしていく
                     }
                     else
                     {

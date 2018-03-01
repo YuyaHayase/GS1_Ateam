@@ -7,8 +7,8 @@ public class oEnemyBullet5Plus : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Destroy(gameObject, 1.5f);
-        GameObject go = Instantiate(bullet) as GameObject;
-        go.transform.position = new Vector3(transform.position.x, transform.position.y + 13, transform.position.z);
+        GameObject bulletInstance= Instantiate(bullet) as GameObject;
+        bulletInstance.transform.position = new Vector3(transform.position.x, transform.position.y + 13, transform.position.z);
 	}
 	
 	// Update is called once per frame

@@ -18,11 +18,12 @@ public class oEnemyBullet8 : MonoBehaviour {//ランダムな軌道
     float angle = 0.0f;//プレイヤーと自身(Enemy)の角度
     // Use this for initialization
     void Start () {
-        
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
+
         if(count <= 4)//4以下の場合
         {
             if (flg == false)
@@ -81,8 +82,7 @@ public class oEnemyBullet8 : MonoBehaviour {//ランダムな軌道
     {
         if(flg2 == false)
         {
-            Debug.Log("a");
-            player = GameObject.Find("Enemy1");
+            player = GameObject.Find("Player");
             BulletAngle(transform.position, player.transform.position);//角度を計算するメソッドに値を入れる
             transform.rotation = Quaternion.Euler(0, 0, angle);
             flg2 = true;

@@ -49,7 +49,7 @@ public class oEnemyMove9 : MonoBehaviour {
         if (transform.tag == "enemy")
         {
             StartCoroutine("rotate");
-            randomTime += Time.deltaTime;
+            randomTime += Time.deltaTime * mother.enemySpeed;
             if (randomTime >= 2)//2秒たったら
             {
                 if (randomFlg == false)
@@ -79,7 +79,7 @@ public class oEnemyMove9 : MonoBehaviour {
                     enemy9Move.transform.rotation = Quaternion.Euler(0, 0, 0);
                     if (enemy9Move.transform.position.y <= 6)
                     {
-                        enemy9Move.transform.Translate(0, 0.03f, 0);
+                        enemy9Move.transform.Translate(0.01f * direction * -1 * mother.enemySpeed, 0.03f, 0);
                     }
                     else
                     {
@@ -101,11 +101,11 @@ public class oEnemyMove9 : MonoBehaviour {
     }
     void oEnemymove9_rotation()
     {
-        transform.Rotate(0, 0, 1 * rotationSpeed);
+        transform.Rotate(0, 0, 1 * rotationSpeed * mother.enemySpeed);
     }
     void oEnemymove9_att1()//一定間隔で弾を出す
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime * mother.enemySpeed;
         if(time >= att1time && count<= 3 )
         {
             pos = transform.position;
@@ -123,7 +123,7 @@ public class oEnemyMove9 : MonoBehaviour {
     void oEnemymove9_att2()//早く回転してから移動
     {
         rotationSpeed = 5;//回転スピードを変更させる
-        time += Time.deltaTime;
+        time += Time.deltaTime * mother.enemySpeed;
         if(time >= att2time)//5秒たったら
         {
             if (posFlg == false)//Playerのポジションをとっていないなら
@@ -137,7 +137,7 @@ public class oEnemyMove9 : MonoBehaviour {
     }
     void oEnemymove9_att3()//落雷
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime * mother.enemySpeed;
         if(time >= atttime3)
         {
             boss.Att2(att2,transform.position);
