@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class oEnemyBullet4 : MonoBehaviour {
+public class oEnemyBullet4 : MonoBehaviour {//強引な放物線
     GameObject player;//
     float x, y;//ベクトルx.y
     float angle;//角度
     float cos;//コサインの値
     float f;
-	// Use this for initialization
-	void Start () {
+    GameObject obj;//※必須
+    oBase mother;//※必須
+                 // Use this for initialization
+    void Start () {
         player = GameObject.Find("Player");//使うときはPlayerに変える
         BulletAngle(transform.position,player.transform.position);//角度を計算するメソッドに値を入れる
         transform.rotation = Quaternion.Euler(0, 0, angle);//角度を変える
         parabola(transform.position, player.transform.position);//
+        obj = GameObject.Find("Reference");
+        mother = obj.GetComponent<oBase>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         cos += 0.1f;//コサインの値を変更
-        transform.Translate(-f, Mathf.Cos(cos) * 0.5f, 0);//強引な放物線
+        transform.Translate(-f, Mathf.Cos(cos) * 0.5f * mother.enemySpeed, 0);//強引な放物線
 	}
 
     float BulletAngle(Vector2 bullerPos,Vector2 playerPos)//タンジェントを使い、弾の向きを変える

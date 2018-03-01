@@ -2,11 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class oBase : MonoBehaviour {
     GameObject player;
     public int i;
     float angle;
     int reflection;
+    float zone = 1.0f;
+    public float f;
+    public float enemySpeed
+    {
+        get
+        {
+            return zone;
+        }
+    }
     // Use this for initialization
     void Start () {
         player = GameObject.Find("Player");
@@ -14,7 +24,15 @@ public class oBase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        zone = f;
+        //if (hkeyConfig.GetKey("Zone"))
+        //{
+        //    zone = f;
+        //}
+        //else
+        //{
+        //    zone = 1.0f;
+        //}
 	}
     public int Playerposition(Vector3 enemypos)//移動方向を取得
     {
@@ -40,65 +58,41 @@ public class oBase : MonoBehaviour {
         switch (angleFlg)
         {
             case 1://天井
-                if (reflect == 3)
-                {
-                    angle= 270;
-                }
-                else
-                {
-                    angle *= -1;//角度に-を掛ける
-                }
+                angle *= -1;//角度に-を掛ける
                 break;
             case 2://床
-                if (reflect == 3)
-                {
-                    angle = 90;
-                }
-                else
-                {
-                    angle *= -1;//角度に-を掛ける
-                }
+                angle *= -1;//角度に-を掛ける
                 break;
             case 3://左の壁
-                if (reflect == 3)
+                switch (reflect)//入射角
                 {
-                    angle = 0;
-                }
-                else
-                {
-                    switch (reflect)//入射角
-                    {
-                        case 1://180度以下
-
-                            angle = Mathf.Abs(angle + 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                        case 2://180度より大きい
-                            angle = Mathf.Abs(angle - 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                    }
-                }
+                    case 1://180度以下
+                        angle = Mathf.Abs(angle + 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 2://180度より大きい
+                        angle = Mathf.Abs(angle - 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 3:
+                        angle = 0;
+                        break;
+                  }
                 break;
             case 4://右の壁
-                if (reflect == 3)
+                switch (reflect)//入射角
                 {
-                    angle = 180;
-                }
-                else
-                {
-                    switch (reflect)//入射角
-                    {
-                        case 1://180度以下
-
-                            angle = Mathf.Abs(angle + 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                        case 2://180度より大きい
-                            angle = Mathf.Abs(angle - 180);
-                            angle *= -1;//角度に-を掛ける
-                            break;
-                    }
+                    case 1://180度以下
+                        angle = Mathf.Abs(angle + 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 2://180度より大きい
+                        angle = Mathf.Abs(angle - 180);
+                        angle *= -1;//角度に-を掛ける
+                        break;
+                    case 3:
+                        angle = 180;
+                        break;
                 }
                 break;
         }
@@ -119,6 +113,10 @@ public class oBase : MonoBehaviour {
             reflection = 2;
         }
         return reflection;
+    }
+    public float playerposition()
+    {
+        return player.transform.position.x;
     }
     void save()
     {

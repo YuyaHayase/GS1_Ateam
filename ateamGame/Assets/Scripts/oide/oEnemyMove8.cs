@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class oEnemyMove8 : MonoBehaviour {//量産禁止
+public class oEnemyMove8 : MonoBehaviour {//量産禁止 透明になる
     float alpha = 1.0f;
     float time = 0.0f;
     float time2 = 0.3f;
@@ -24,15 +24,15 @@ public class oEnemyMove8 : MonoBehaviour {//量産禁止
         color.g = 1.0f;
         color.b = 1.0f;
         color.a = 1.0f;
-        obj = GameObject.Find("Difference");//ベースの入っているオブジェクトを取得、名前を変えて
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (transform.tag == "enemy")
         {
-            time2 += Time.deltaTime;
-            time += Time.deltaTime;
+            time2 += Time.deltaTime * mother.enemySpeed;
+            time += Time.deltaTime * mother.enemySpeed;
             if (time2 > 0.3f)
             {
                 Enemymove8();
@@ -52,7 +52,7 @@ public class oEnemyMove8 : MonoBehaviour {//量産禁止
                 rend.material.color = color;
                 if (alpha >= 0.05f)
                 {
-                    alpha -= 0.06f;
+                    alpha -= 0.06f * mother.enemySpeed;
                     color.a = alpha;
                 }
                 else
@@ -75,7 +75,7 @@ public class oEnemyMove8 : MonoBehaviour {//量産禁止
 	}
     void Enemymove8()
     {
-        transform.Translate(0.05f * direction, 0, 0);
+        transform.Translate(0.05f * direction * mother.enemySpeed, 0, 0);
     }
 
 }

@@ -10,9 +10,12 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
     Vector3 enemyPosition;//処置開始時のポジション
     public GameObject bullet;//弾
     GameObject bulletInstance;
+    GameObject obj;//※必須
+    oBase mother;//※必須
     // Use this for initialization
     void Start () {
-        
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
     }
 	// Update is called once per frame
 	void Update () {
@@ -39,7 +42,7 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
         }
         if(Mathf.Abs(transform.position.x - enemyPosition.x) <= 2 && Mathf.Abs(transform.position.y - enemyPosition.y) <= 2)//一定距離移動するまで
         {
-            transform.Translate(0.02f, 0, 0);//移動
+            transform.Translate(0.02f * mother.enemySpeed, 0, 0);//移動
         }
         else
         {
@@ -49,7 +52,7 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
     }
     public void oEnemymove4_pattern2(ref int i)//待機
     {
-        time += Time.deltaTime;
+        time += Time.deltaTime * mother.enemySpeed;
         if (time >= 2)
         {
             flg = false;

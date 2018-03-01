@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class oEnemyMove6 : MonoBehaviour {
+public class oEnemyMove6 : MonoBehaviour {//プレイヤーの上に行き真下に攻撃
     GameObject playerPosition;
     bool flg = false;
     bool flg2 = false;
     bool flg3 = false;
     int i = 1;
-	// Use this for initialization
-	void Start () {
-        
-	}
+    GameObject obj;//※必須
+    oBase mother;//※必須
+                 // Use this for initialization
+    void Start () {
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -37,18 +40,18 @@ public class oEnemyMove6 : MonoBehaviour {
     {
         if(Mathf.Abs(transform.position.x - playerPosition.transform.position.x) > 1 && flg3 == false)
         {
-            transform.Translate(0.03f * i, 0, 0);
+            transform.Translate(0.03f * i * mother.enemySpeed, 0, 0);
         }
         else
         {
             flg3 = true;
             if (flg2 == false)
             {
-                transform.Translate(0, -0.04f, 0);
+                transform.Translate(0, -0.04f * mother.enemySpeed, 0);
             }
             if (flg2 == true && transform.position.y <= 6)
             {
-                transform.Translate(0, 0.04f, 0);
+                transform.Translate(0, 0.04f * mother.enemySpeed, 0);
             }
             else if(flg2 == true && transform.position.y > 6)
             {

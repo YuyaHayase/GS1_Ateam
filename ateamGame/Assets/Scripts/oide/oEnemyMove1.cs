@@ -11,19 +11,22 @@ public class oEnemyMove1 : MonoBehaviour{
     GameObject obj;//※必須
     oBase mother;//※必須
     int direction;//向き※必須
+    Vector3 pos;
+    bool cosFlg = false;
     // Use this for initialization
     void Start () {
         enemyPotision = transform.position;//enemyの座標を取得(必要かどうかは知らないです)
         obj = GameObject.Find("Reference");//名前を変えて
-        oBase tester = obj.GetComponent<oBase>();
+        mother = obj.GetComponent<oBase>();
     }
 
     // Update is called once per frame
     void Update()//コサインの値を変更させて移動
     {
+        pos = transform.position;
         if (transform.tag == "enemy")
         {
-            time += Time.deltaTime;
+            time += Time.deltaTime * mother.enemySpeed;
             if (time >= 2.0f)//2秒間隔
             {
                 if (posflg == false)
@@ -34,13 +37,18 @@ public class oEnemyMove1 : MonoBehaviour{
                     //※必須
                     posflg = true;
                 }
-                cos += 0.1f;//コサインの値を増やす
-                transform.Translate(movement * direction, Mathf.Cos(cos) * 0.5f, 0);//山なりに移動
-                if (transform.position.y <= 0)//自身のY座標が0未満になったとき
+                if(cosFlg == true)
                 {
-                    posflg = false;
-                    cos = 0;//コサインの値を0にする
-                    time = 0;
+                    transform.Translate(0.13f * direction * mother.enemySpeed, -0.33f * mother.enemySpeed, 0);
+                }
+                else
+                {
+                    cos += 0.1f * mother.enemySpeed;//コサインの値を増やす
+                    transform.Translate(movement * direction * mother.enemySpeed, Mathf.Cos(cos) * 0.5f * mother.enemySpeed, 0);//山なりに移動
+                }
+                if (pos.y > transform.position.y)
+                {
+                    cosFlg = true;
                 }
             }
         }
@@ -50,5 +58,7 @@ public class oEnemyMove1 : MonoBehaviour{
         //tagか何かで判定できるといいかもしれない
         cos = 0;//コサインの値を0にする
         time = 0;
+        posflg = false;
+        cosFlg = false;
     }
 }

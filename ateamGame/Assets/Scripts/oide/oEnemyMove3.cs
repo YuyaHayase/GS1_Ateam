@@ -14,15 +14,15 @@ public class oEnemyMove3 : MonoBehaviour {
     bool posflg = false;
     // Use this for initialization
     void Start () {
-        obj = GameObject.Find("Difference");//ベースの入っているオブジェクトを取得、名前を変えて
-
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (transform.tag == "enemy")
         {
-            time += Time.deltaTime;
+            time += Time.deltaTime * mother.enemySpeed;
             if (time >= attackTime)
             {
                 StartCoroutine("Enemymove3");
@@ -41,11 +41,11 @@ public class oEnemyMove3 : MonoBehaviour {
         }
         for (int i = 0; i <= 10; i++)
         {
-            transform.Translate(movement * direction, 0, 0);
+            transform.Translate(movement * direction * mother.enemySpeed, 0, 0);
             if (i == 10)
             {
                 bulletInstance = Instantiate(bullet) as GameObject;
-                bulletInstance.transform.position = new Vector3(transform.position.x + 1, transform.position.y , 0);//弾を配置
+                bulletInstance.transform.position = new Vector3(transform.position.x + direction, transform.position.y , 0);//弾を配置
                 posflg = false;
                 time = 0;
                 StopCoroutine("Enemymove3");

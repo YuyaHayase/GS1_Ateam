@@ -14,13 +14,13 @@ public class oEnemyMove2 : MonoBehaviour {
     int direction;//向き※必須
     // Use this for initialization
     void Start () {
-        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        obj = GameObject.Find("Difference");//ベースの入っているオブジェクトを取得、名前を変えて
     }
 	// Update is called once per frame
 	void Update () {
         if (transform.tag == "enemy")
         {
-            time += Time.deltaTime;
+            time += Time.deltaTime * mother.enemySpeed;
             if (time > 2)//2秒後
             {
                 if (posflg == false)
@@ -34,7 +34,7 @@ public class oEnemyMove2 : MonoBehaviour {
 
                 if (f <= 40 && flg == false)//回転の大きさが40以下かつ、フラグがfalseなら
                 {
-                    f += 0.1f;//回転の大きさを増やす
+                    f += 0.1f * mother.enemySpeed;//回転の大きさを増やす
                 }
                 else//回転の大きさが40を超えたら
                 {
@@ -44,13 +44,13 @@ public class oEnemyMove2 : MonoBehaviour {
                 {
                     if (f >= 0)//回転の大きさが0以上なら
                     {
-                        f -= 0.1f;//減らしていく
-                        enemyMoveDistance += x;//移動する値を増やしていく
+                        f -= 0.1f * mother.enemySpeed;//減らしていく
+                        enemyMoveDistance += x * mother.enemySpeed;//移動する値を増やしていく
                         transform.position = new Vector3(transform.position.x + enemyMoveDistance * direction, transform.position.y, transform.position.z);//移動
                     }
                     else
                     {
-                        enemyMoveDistance -= x;//移動する値を減らしていく
+                        enemyMoveDistance -= x * mother.enemySpeed;//移動する値を減らしていく
                         if (enemyMoveDistance <= 1)//移動距離が0以下になったら
                         {
                             time = 0;//時間のカウントを0にする
