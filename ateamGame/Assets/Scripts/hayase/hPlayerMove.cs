@@ -92,7 +92,7 @@ public class hPlayerMove : MonoBehaviour {
         if (Input.GetAxis("Vertical") > 0.8f) jumping = true;
         if (Input.GetAxis("Horizontal") == 0) Axis.x = Input.GetAxis("The Cross Key LeftRight") / joyLeftAxisComp;
         else Axis.x = Input.GetAxis("Horizontal") / joyLeftAxisComp;
-        if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 4f;
+        if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 3.5f;
         transform.position += new Vector3(Axis.x, py, 0);
 
         // アクシスの調整 右ステック
