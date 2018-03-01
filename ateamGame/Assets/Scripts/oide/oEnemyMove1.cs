@@ -53,12 +53,16 @@ public class oEnemyMove1 : MonoBehaviour{
             }
         }
     }
-    void OnCollisionEnter2D(Collision2D other)//床などに当たった時に移動を停止させる(Playerに当たったときはそのまま移動を続けるようにお願いします)
+    public void OnTriggerEnter2D(Collider2D other)//床などに当たった時に移動を停止させる(Playerに当たったときはそのまま移動を続けるようにお願いします)
     {
-        //tagか何かで判定できるといいかもしれない
-        cos = 0;//コサインの値を0にする
-        time = 0;
-        posflg = false;
-        cosFlg = false;
+        if(other.gameObject.tag != "enemy")
+        {
+            //tagか何かで判定できるといいかもしれない
+            cos = 0;//コサインの値を0にする
+            time = 0;
+            posflg = false;
+            cosFlg = false;
+        }
+
     }
 }
