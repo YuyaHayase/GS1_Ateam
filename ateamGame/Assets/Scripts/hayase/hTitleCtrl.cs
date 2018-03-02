@@ -8,9 +8,6 @@ public class hTitleCtrl : MonoBehaviour {
     [SerializeField, Header("羊のオブジェクト")]
     GameObject sheep;
 
-    [SerializeField, Header("はてなのオブジェクト")]
-    GameObject question;
-
     [SerializeField, Header("歯車のオブジェクト")]
     GameObject setting;
 
@@ -22,7 +19,6 @@ public class hTitleCtrl : MonoBehaviour {
     // Use this for initialization
     void Start () {
         if (sheep == null) sheep = GameObject.Find("sheep");
-        if (question == null) question = GameObject.Find("hatena");
         if (setting == null) setting = GameObject.Find("background");
         if (title_logo == null) setting = GameObject.Find("Title_Logo");
         if (Select == null) Select = title_logo;
@@ -51,15 +47,13 @@ public class hTitleCtrl : MonoBehaviour {
         }
 
         // アクシスによって選択をする
-        //if (X == 0 && Y == 0) Select = title_logo;
-        if (Y > 0.5f) Select = sheep;
-        if (X < -0.5f && Y < -0.5f) Select = question;
-        if (X > 0.5f && Y < 0.5f) Select = setting;
+        if (X < -0.5f) Select = sheep;
+        if (X > 0.5f) Select = setting;
         
         // カメラ移動
         transform.position = Select.transform.position - new Vector3(0,0,10);
 
-        if (hKeyConfig.GetKeyDown("Submit")) print(Select.name);
+        if (hKeyConfig.GetKeyDown("Submit")) SceneManager.LoadScene(Select.name);
         if (hKeyConfig.GetKeyDown("Jump")) Select = title_logo;
     }
 }

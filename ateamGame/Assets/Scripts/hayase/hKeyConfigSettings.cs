@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
 using System;
+using UnityEngine.SceneManagement;
 
 public class hKeyConfigSettings : MonoBehaviour {
 
@@ -204,6 +205,8 @@ public class hKeyConfigSettings : MonoBehaviour {
         sw.WriteLine(FilePath);
         sw.Close();
         fs.Close();
+
+        SceneManager.LoadScene("Title");
     }
 
     // コントローラのモード

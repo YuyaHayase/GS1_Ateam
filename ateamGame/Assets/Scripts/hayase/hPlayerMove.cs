@@ -55,6 +55,7 @@ public class hPlayerMove : MonoBehaviour {
         kcs.Init();
 
         if(yhp == null) yhp = new yHpgage();
+        yhp.Acquisition();
     }
 
     // Update is called once per frame
@@ -158,12 +159,16 @@ public class hPlayerMove : MonoBehaviour {
         {
             if(col.tag == "enemy")
             {
-                if (yhp == null) yhp = new yHpgage();
+                if (yhp == null)
+                {
+                    yhp = new yHpgage();
+                    yhp.Acquisition();
+                }
 
                 if (transform.position.x < col.transform.position.x) transform.Translate(new Vector3(-3f, 0, 0));
                 else transform.Translate(new Vector3(3f, 0, 0));
 
-                // yhp.PlayerDamage(PlayerReceiveDamage);
+                yhp.PlayerDamage(PlayerReceiveDamage);
             }
         }catch(Exception e)
         {
