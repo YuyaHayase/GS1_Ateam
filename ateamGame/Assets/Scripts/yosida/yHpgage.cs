@@ -36,24 +36,6 @@ public class yHpgage : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Acquisition();
-    }
-
-    // Update is called once per frame
-    void Update () {
-        //デバッグ用
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlayerDamage(30);
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            EnemyDamage(10);
-        }
-    }
-
-    public void Acquisition()
-    {
         particle = Resources.Load("yResources/particle") as GameObject;
         //子オブジェクト取得
         hpGage = transform.FindChild("hpGage").gameObject.GetComponent<Image>();
@@ -71,7 +53,27 @@ public class yHpgage : MonoBehaviour {
             hp = enemyManager.EnemyHP;
         }
         maxHP = hp;
+    }
 
+    // Update is called once per frame
+    void Update () {
+        //デバッグ用
+        if (Input.GetMouseButtonDown(0))
+        {
+            PlayerDamage(30);
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            EnemyDamage(10);
+        }
+    }
+
+    public void Acquisition()//呼び出されたとき
+    {
+        hpGage = GameObject.Find("Canvas/HPvar/hpGage").GetComponent<Image>();
+        redGage = GameObject.Find("Canvas/HPvar/redGage").GetComponent<Image>();
+        waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
+        maxHP = hp;
     }
 
     public void PlayerDamage(int x)
