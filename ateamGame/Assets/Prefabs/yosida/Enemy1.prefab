@@ -74,8 +74,8 @@ GameObject:
   - component: {fileID: 212328855816346372}
   - component: {fileID: 114532354984694556}
   - component: {fileID: 114027025216002322}
-  - component: {fileID: 50453375113125006}
   - component: {fileID: 61908019129192310}
+  - component: {fileID: 50134068719933026}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: enemy
@@ -286,7 +286,7 @@ Transform:
   m_Father: {fileID: 4729406517164958}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50453375113125006
+--- !u!50 &50134068719933026
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -415,7 +415,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.19809997}
@@ -429,7 +429,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 2}
+  m_Size: {x: 0.4, y: 2.56}
   m_EdgeRadius: 0
 --- !u!61 &61984011245199114
 BoxCollider2D:
