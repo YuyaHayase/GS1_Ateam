@@ -29,6 +29,8 @@ public class hTitleCtrl : MonoBehaviour {
 
 
         hJoyStickReceiver jsr = new hJoyStickReceiver();
+        hKeyConfig.Config["Jump"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.Cross);
+        hKeyConfig.Config["Zone"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.L1);
         hKeyConfig.Config["Submit"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.Square);
     }
 
@@ -49,7 +51,7 @@ public class hTitleCtrl : MonoBehaviour {
         }
 
         // アクシスによって選択をする
-        if (X == 0 && Y == 0) Select = title_logo;
+        //if (X == 0 && Y == 0) Select = title_logo;
         if (Y > 0.5f) Select = sheep;
         if (X < -0.5f && Y < -0.5f) Select = question;
         if (X > 0.5f && Y < 0.5f) Select = setting;
@@ -58,5 +60,6 @@ public class hTitleCtrl : MonoBehaviour {
         transform.position = Select.transform.position - new Vector3(0,0,10);
 
         if (hKeyConfig.GetKeyDown("Submit")) print(Select.name);
+        if (hKeyConfig.GetKeyDown("Jump")) Select = title_logo;
     }
 }
