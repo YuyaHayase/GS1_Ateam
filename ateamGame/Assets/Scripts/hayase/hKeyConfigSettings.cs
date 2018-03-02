@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using UnityEngine.EventSystems;
+using System;
 
 public class hKeyConfigSettings : MonoBehaviour {
 
@@ -121,9 +122,16 @@ public class hKeyConfigSettings : MonoBehaviour {
 
         // セレクトの初期設定
         if(SelectedObj == null) SelectedObj = GameObject.Find("JumpBtn");
-        EventSystem.current.SetSelectedGameObject(SelectedObj);
 
-        GameObject.Find("Parallax Btn").GetComponent<Toggle>().isOn = ParallaxEffect;
+        try
+        {
+            EventSystem.current.SetSelectedGameObject(SelectedObj);
+
+            GameObject.Find("Parallax Btn").GetComponent<Toggle>().isOn = ParallaxEffect;
+        }catch(Exception e)
+        {
+            print(e.Message);
+        }
 
         Debug.Log(FilePath);
 
@@ -214,7 +222,14 @@ public class hKeyConfigSettings : MonoBehaviour {
                 break;
         }
 
-        GameObject.Find("CtrlTxt").GetComponent<Text>().text = s;
+        try
+        {
+            GameObject.Find("CtrlTxt").GetComponent<Text>().text = s;
+        }
+        catch (Exception e)
+        {
+            print(e.Message);
+        }
     }
 
     // 視差効果を使用するか否か
