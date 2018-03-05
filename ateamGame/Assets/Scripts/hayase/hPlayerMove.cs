@@ -143,8 +143,8 @@ public class hPlayerMove : MonoBehaviour {
             // 壁に当たったら跳ね返る
             if (col.tag == "wall")
             {
-                if (col.transform.position.x < transform.position.x) transform.Translate(new Vector3(0.35f, 0, 0));
-                if (col.transform.position.x > transform.position.x) transform.Translate(new Vector3(-0.35f, 0, 0));
+                if (col.transform.position.x < transform.position.x) transform.Translate(new Vector3(0.5f, 0, 0));
+                if (col.transform.position.x > transform.position.x) transform.Translate(new Vector3(-0.5f, 0, 0));
             }
         }
         catch (Exception e)

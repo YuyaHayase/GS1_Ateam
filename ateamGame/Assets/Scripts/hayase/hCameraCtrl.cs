@@ -96,7 +96,6 @@ public class hCameraCtrl : MonoBehaviour {
         else
         {
             if ((wall.transform.position - Player.transform.position).magnitude > 15) CameraMove = true;
-            print((wall.transform.position - Player.transform.position).magnitude);
         }
 
     }
