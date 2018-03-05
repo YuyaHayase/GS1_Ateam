@@ -17,7 +17,7 @@ public class hCameraCtrl : MonoBehaviour {
 
     // ビネットの最大値
     [SerializeField, Header("ビネットの最大値")]
-    float vMax = 0.23f;
+    float vMax = 0.3f;
 
     // ビネットの変化値
     [SerializeField, Header("ビネットの変化値(値が大きいほどゆっくり)")]
