@@ -7,6 +7,9 @@ public class hBackGroundHuman : MonoBehaviour {
     [SerializeField, Header("カメラオブジェクトを入れてください")]
     GameObject Camera;
 
+    [SerializeField, Header("キャラの高さ")]
+    float height = 4;
+
     public enum Direction
     {
         Left = -1,
@@ -31,7 +34,7 @@ public class hBackGroundHuman : MonoBehaviour {
         else dir = Direction.Right;
 
         // ほぼ画面外から出現
-        transform.position = new Vector2(-Random.Range(0, 45) * (int)dir, 4);
+        transform.position = new Vector2(-Random.Range(0, 45) * (int)dir, height);
         transform.localScale = new Vector2((int)dir * 0.6f, 0.6f);
     }
 
@@ -48,7 +51,7 @@ public class hBackGroundHuman : MonoBehaviour {
         {
             GameObject g = Instantiate(gameObject) as GameObject;
             g.transform.parent = transform.parent;
-            g.transform.position = new Vector2(-Random.Range(44, 50) * (int)dir, 4);
+            g.transform.position = new Vector2(-Random.Range(44, 50) * (int)dir, height);
             Destroy(gameObject);
         }
 	}

@@ -781,7 +781,7 @@ GameObject:
   - component: {fileID: 1257277103}
   m_Layer: 0
   m_Name: ground
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1516,7 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType:
-  - {fileID: 212328855816346372, guid: d2fda78dcf785ff4fa43905192ff8aa9, type: 2}
+  - {fileID: 212279771264687472, guid: 7e9f8c95a3a2b824e8f2978a5f123886, type: 2}
   - {fileID: 212488885729996928, guid: 1f0b2ea88dfc28d4bae159ac2a8e68df, type: 2}
   - {fileID: 0}
 --- !u!4 &2049984452
