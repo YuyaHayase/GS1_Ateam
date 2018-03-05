@@ -59,7 +59,7 @@ public class hCameraCtrl : MonoBehaviour {
             try
             {
                 // 集中時
-                if (hKeyConfig.GetKey("Zone"))
+                if (hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))
                 {
                     zone = true;
                     if (Vignette.intensity < vMax) Vignette.intensity += Time.deltaTime / vAccel;
@@ -67,7 +67,7 @@ public class hCameraCtrl : MonoBehaviour {
                 }
 
                 // 集中が終わったとき
-                if (hKeyConfig.GetKeyUp("Zone"))
+                if (hKeyConfig.GetKeyUp("Zone") || Input.GetKeyUp(KeyCode.LeftShift))
                 {
                     zone = false;
                     MotionsBlur.blurAmount = 0.6f;

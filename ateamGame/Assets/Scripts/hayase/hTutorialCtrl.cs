@@ -2,25 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.ImageEffects;
 
 public class hTutorialCtrl : MonoBehaviour {
 
-    float delta = 0;
+    float delta = 0.1f;
+    bool sleep = false;
 
-    [SerializeField, Header("BAr")]
-    GameObject Bar;
+    [SerializeField, Header("MainCamera")]
+    GameObject Camera;
 
 	// Use this for initialization
 	void Start () {
-        if (Bar == null) Bar = GameObject.Find("Bar");
+        if (Camera == null) Camera = GameObject.Find("Main Camera");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (hKeyConfig.GetKey("Submit")) delta += Time.deltaTime;
-        if (hKeyConfig.GetKeyUp("Submit")) delta = 0;
+        if (hKeyConfig.GetKey("Submit") || Input.GetKey(KeyCode.Space))
+        {
+            delta += Time.deltaTime / 4f;
+            sleep = true;
+        }
+        if (hKeyConfig.GetKeyUp("Submit") || Input.GetKeyUp(KeyCode.Space))
+        {
+            delta = 0.1f;
+            sleep = false;
+        }
 
-        Bar.transform.localScale = new Vector3(delta, 1, 1);
-        if (delta > 5) SceneManager.LoadScene("Main");
-	}
+        if (delta >= 0.999f)
+        {
+            delta = 0.999f;
+            SceneManager.LoadScene("Main");
+        }
+        if (sleep) Camera.GetComponent<VignetteAndChromaticAberration>().intensity = delta;
+    }
 }

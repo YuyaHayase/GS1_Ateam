@@ -15,6 +15,7 @@ public class hTitleCtrl : MonoBehaviour {
     GameObject title_logo;
 
     GameObject Select;
+    float sel = 0;
 
     // Use this for initialization
     void Start () {
@@ -35,25 +36,27 @@ public class hTitleCtrl : MonoBehaviour {
 
         // コントローラのアクシス取得
         float X = Input.GetAxis("Horizontal");
-        float Y = Input.GetAxis("Vertical");
-        switch (hKeyConfigSettings.mo)
+
+        // アクシスによって選択をする
+        switch (Select.name)
         {
-            case 0:
-                Y = Input.GetAxis("Vertical");
+            case "Title":
+                if (X > 0.5f) Select = setting;
+                if (X < -0.5f) Select = sheep;
                 break;
-            case 1:
-                Y = Input.GetAxis("Vertical");
+            case "Tutorial":
+                if (X > 0.5f) Select = title_logo;
+                if (X < -0.5f) Select = sheep;
+                break;
+            case "KeyConfig":
+                if (X > 0.5f) Select = setting;
+                if (X < -0.5f) Select = title_logo;
                 break;
         }
 
-        // アクシスによって選択をする
-        if (X < -0.5f) Select = sheep;
-        if (X > 0.5f) Select = setting;
-        
         // カメラ移動
-        transform.position = Select.transform.position - new Vector3(0,0,10);
+        if (Select != null)transform.position = Select.transform.position - new Vector3(0,0,10);
 
-        if (hKeyConfig.GetKeyDown("Submit")) SceneManager.LoadScene(Select.name);
-        if (hKeyConfig.GetKeyDown("Jump")) Select = title_logo;
+        if ((hKeyConfig.GetKeyDown("Submit") || Input.GetKeyDown(KeyCode.Space)) && Select != null) SceneManager.LoadScene(Select.name);
     }
 }
