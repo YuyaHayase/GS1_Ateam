@@ -41,19 +41,18 @@ public class oEnemyBullet11 : MonoBehaviour//分裂弾
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0.08f * mother.enemySpeed, 0, 0);
-        oEnemymove5_Att1();
+        transform.Translate(-0.08f * mother.enemySpeed, 0, 0);
     }
-    public void oEnemymove5_Att1()
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        time += Time.deltaTime * mother.enemySpeed;
-        if (time >= 2)
+        if (other.tag == "ground")
         {
             for (int i = 0; i < way; i++)
             {
                 bulletInstance = Instantiate(bullet) as GameObject;
                 bulletInstance.transform.rotation = Quaternion.Euler(0, 0, ii[i]);
-                bulletInstance.transform.position = new Vector3(transform.position.x, transform.position.y, 0);//弾を配置
+                bulletInstance.transform.position = new Vector3(transform.position.x, transform.position.y -0.2f, 0);//弾を配置
             }
             Destroy(gameObject);
         }

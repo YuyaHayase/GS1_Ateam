@@ -22,7 +22,7 @@ public class oEnemyBullet12 : MonoBehaviour {//爆発
 	// Update is called once per frame
 	void Update () {
         time += Time.deltaTime　* mother.enemySpeed;
-        if(time <= 1)
+        if(time <= 0.7f)
         {
             transform.Translate(0, 0.104f * mother.enemySpeed, 0);
             transform.localScale = new Vector3(transform.localScale.x + 0.08f * mother.enemySpeed, transform.localScale.y + 0.08f * mother.enemySpeed, transform.localScale.z);

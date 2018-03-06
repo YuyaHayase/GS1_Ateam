@@ -38,7 +38,7 @@ public class oEnemyMove9 : MonoBehaviour {
     void Start () {
         obj = GameObject.Find("Reference");//oBaseの入っているオブジェクトを探す
         mother = obj.GetComponent<oBase>();
-        enemy9 = GameObject.Find("Enemy9r");//oBossBaseの入っているオブジェクトを探す
+        enemy9 = GameObject.Find("Enemy9");//oBossBaseの入っているオブジェクトを探す
         enemy9Move = enemy9.GetComponent<oEnemyMove92>();
         boss = obj.GetComponent<oBossBase>();
 
