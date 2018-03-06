@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class hPlayerMove : MonoBehaviour {
 
@@ -151,6 +152,8 @@ public class hPlayerMove : MonoBehaviour {
         // 集中時以外武器の判定を消す
         if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift)) && (RightX != 0 || RightY != 0 )) _child.SetActive(true);
         else _child.SetActive(false);
+
+        if (0 >= yhp.PlayerHps) SceneManager.LoadScene("GameOver");
     }
 
     void OnTriggerStay2D(Collider2D col)
