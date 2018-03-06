@@ -8,6 +8,14 @@ public class hTutorialUSA : MonoBehaviour {
     float VectorX;
     float delta = 2;
     float d;
+
+    AudioSource aus;
+
+    void Start()
+    {
+        if (aus == null) aus = GetComponent<AudioSource>();
+    }
+
 	// Update is called once per frame
 	void Update () {
         if (ro)
@@ -34,6 +42,7 @@ public class hTutorialUSA : MonoBehaviour {
         {
             ro = true;
             VectorX = -(transform.position.x - col.transform.position.x) / 4f;
+            aus.Play();
         }
     }
 }

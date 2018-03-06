@@ -50,10 +50,16 @@ public class hPlayerMove : MonoBehaviour {
 
     void Awake()
     {
+        try
+        {
         yhp = GameObject.Find("Canvas/HPvar").GetComponent<yHpgage>();
         yhp.PlayerHps = 150;
 
         yhp.Acquisition();
+        }catch(Exception e)
+        {
+            print(e.Message + ": HPゲージ");
+        }
     }
 
     // Use this for initialization
