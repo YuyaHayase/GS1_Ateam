@@ -43,7 +43,7 @@ public class oEnemyMove92 : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        enemy9 = GameObject.Find("Enemy9");
+        enemy9 = GameObject.Find("Enemy9Child");
         enemy9Move = enemy9.GetComponent<oEnemyMove9>();
         obj = GameObject.Find("Reference");
         mother = obj.GetComponent<oBase>();

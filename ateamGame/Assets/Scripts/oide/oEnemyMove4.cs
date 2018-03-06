@@ -7,6 +7,8 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
     float time;
     int enemyAttack = 1;//1なら移動、2なら単発、3なら連射
     int count = 0;//連射のカウント
+    int direction;
+    public int lifeCount = 0;//自爆までのカウント、積み防止
     Vector3 enemyPosition;//処置開始時のポジション
     public GameObject bullet;//弾
     GameObject bulletInstance;
@@ -29,6 +31,10 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
             {
                 oEnemymove4_pattern3(enemyAttack);
             }
+        }
+        if(lifeCount >= 4)
+        {
+            Destroy(gameObject);
         }
     }
     public void oEnemymove4_pattern1()//移動
@@ -64,9 +70,15 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
     {
         if(enemy == 2)//単発
         {
+            direction =  mother.Playerposition(transform.position);
             bulletInstance = Instantiate(bullet) as GameObject;
+            if(direction == -1)
+            {
+                bulletInstance.transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
             bulletInstance.transform.position = new Vector3(transform.position.x, transform.position.y, 0);//弾を配置
             enemyAttack = 1;
+            lifeCount++;
         }
         else if(enemy == 3)//3連射
         {
@@ -75,6 +87,10 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
             {
                 time = 0;
                 bulletInstance = Instantiate(bullet) as GameObject;
+                if (direction == -1)
+                {
+                    bulletInstance.transform.rotation = Quaternion.Euler(0, 0, 180);
+                }
                 bulletInstance.transform.position = new Vector3(transform.position.x, transform.position.y, 0);//弾を配置
                 count++;
             }
@@ -82,8 +98,13 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
             {
                 count = 0;
                 enemyAttack = 1;
+                lifeCount++;
             }
             
         }
+    }
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

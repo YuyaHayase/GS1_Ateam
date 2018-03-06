@@ -59,7 +59,6 @@ public class oEnemyMove10 : MonoBehaviour {
                 {
 
                     random = Random.Range(1, 4);
-                    Debug.Log(random);
                     randomFlg = true;
                 }
 

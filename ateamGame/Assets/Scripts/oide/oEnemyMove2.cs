@@ -14,7 +14,8 @@ public class oEnemyMove2 : MonoBehaviour {
     int direction;//向き※必須
     // Use this for initialization
     void Start () {
-        obj = GameObject.Find("Difference");//ベースの入っているオブジェクトを取得、名前を変えて
+        obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
     }
 	// Update is called once per frame
 	void Update () {

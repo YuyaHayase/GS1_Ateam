@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
-
-public class oBase : MonoBehaviour
-{
+public class oBase : MonoBehaviour {
     GameObject player;
     public int i;
     float angle;
@@ -21,12 +18,9 @@ public class oBase : MonoBehaviour
         }
     }
     // Use this for initialization
-
-    void Start()
-    {
+    void Start () {
         player = GameObject.Find("Player");
     }
-
 	
 	// Update is called once per frame
 	void Update () {
@@ -40,7 +34,6 @@ public class oBase : MonoBehaviour
         //    zone = 1.0f;
         //}
 	}
-
     public int Playerposition(Vector3 enemypos)//移動方向を取得
     {
         player = GameObject.Find("Player");
@@ -60,9 +53,8 @@ public class oBase : MonoBehaviour
         angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;//角度を求める
         return angle;//値(角度)を返す 
     }
-
-    public float Reflection(int angleFlg, int reflect, float angle)//壁反射
-    {//                          壁　　　　　　入射角　　　　当たったときの角度
+    public float Reflection(int angleFlg,int reflect,float angle)//壁反射
+    {
         switch (angleFlg)
         {
             case 1://天井
@@ -85,7 +77,6 @@ public class oBase : MonoBehaviour
                     case 3:
                         angle = 0;
                         break;
-
                   }
                 break;
             case 4://右の壁
@@ -103,6 +94,7 @@ public class oBase : MonoBehaviour
                         angle = 180;
                         break;
                 }
+                break;
         }
         return angle;
     }

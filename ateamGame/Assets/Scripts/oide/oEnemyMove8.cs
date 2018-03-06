@@ -25,6 +25,7 @@ public class oEnemyMove8 : MonoBehaviour {//量産禁止 透明になる
         color.b = 1.0f;
         color.a = 1.0f;
         obj = GameObject.Find("Reference");//ベースの入っているオブジェクトを取得、名前を変えて
+        mother = obj.GetComponent<oBase>();
     }
 	
 	// Update is called once per frame
@@ -42,7 +43,6 @@ public class oEnemyMove8 : MonoBehaviour {//量産禁止 透明になる
                 //※必須
                 mother = obj.GetComponent<oBase>();
                 direction = mother.Playerposition(transform.position);
-                //※必須
                 posflg = true;
                 posflg = false;//※必須
             }

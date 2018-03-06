@@ -63,6 +63,5 @@ public class oEnemyMove1 : MonoBehaviour{
             posflg = false;
             cosFlg = false;
         }
-
     }
 }

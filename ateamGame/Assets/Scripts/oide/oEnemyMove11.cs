@@ -23,7 +23,7 @@ public class oEnemyMove11 : MonoBehaviour {
     float[] pos = new float[5];
     // Use this for initialization
     void Start () {
-        parent = GameObject.Find("boss3");
+        parent = GameObject.Find("Boss3child");
         obj = GameObject.Find("Reference");
         mother = obj.GetComponent<oBase>();
     }
