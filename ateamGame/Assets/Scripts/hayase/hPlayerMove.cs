@@ -45,6 +45,17 @@ public class hPlayerMove : MonoBehaviour {
     [SerializeField, Header("プレイヤーが敵に当たったときの受けるダメージ")]
     int PlayerReceiveDamage = 30;
 
+    [SerializeField, Header("ノックバック量")]
+    float KnockBack = 5f;
+
+    void Awake()
+    {
+        yhp = GameObject.Find("Canvas/HPvar").GetComponent<yHpgage>();
+        yhp.PlayerHps = 150;
+
+        yhp.Acquisition();
+    }
+
     // Use this for initialization
     void Start () {
         // 子オブジェクトの取得
@@ -55,7 +66,7 @@ public class hPlayerMove : MonoBehaviour {
         kcs.Init();
 
         if(yhp == null) yhp = new yHpgage();
-        yhp.Acquisition();
+        //yhp.Acquisition();
     }
 
     // Update is called once per frame
@@ -154,24 +165,17 @@ public class hPlayerMove : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    {
-        try
+    { 
+        // 
+        if(col.tag == "enemy")
         {
-            if(col.tag == "enemy")
-            {
-                if (transform.position.x < col.transform.position.x) transform.Translate(new Vector3(-1.5f, 0, 0));
-                else transform.Translate(new Vector3(1.5f, 0, 0));
+            // ノックバック
+            if (transform.position.x < col.transform.position.x) transform.Translate(new Vector3(-KnockBack, 0, 0));
+            else transform.Translate(new Vector3(KnockBack, 0, 0));
 
-                if (yhp == null)
-                {
-                    yhp = new yHpgage();
-                    yhp.Acquisition();
-                }
-                yhp.PlayerDamage(PlayerReceiveDamage);
-            }
-        }catch(Exception e)
-        {
-            Debug.LogError("h:"+e.Message);
+            // ダメージ
+            yhp.PlayerDamage(PlayerReceiveDamage, col);
         }
+            
     }
 }

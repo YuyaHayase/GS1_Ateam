@@ -7,6 +7,10 @@ TagManager:
   - weapon
   - enemy
   - deathEnemy
+  - wall
+  - floor
+  - damage
+  - ground
   layers:
   - Default
   - TransparentFX

@@ -12,7 +12,7 @@ public class yHpgage : MonoBehaviour {
 
     [SerializeField,Header("PlayerHP専用")]
     int hp = 150;
-    int maxHP;
+    public int maxHP;
     [SerializeField,Header("HPのゲージが減る時間")]
     float hpGageSpeed = 0.01f;
     [SerializeField, Header("HPのゲージのfillAmountが減っていく値")]
@@ -28,6 +28,18 @@ public class yHpgage : MonoBehaviour {
 
     yEnemyManager enemyManager;
     yWaveManagement waveManagement;
+
+    public int PlayerHps
+    {
+        get { return hp; }
+        set { hp = value; }
+    }
+
+    public int PlayerMaxHps
+    {
+        get { return maxHP; }
+        set { maxHP = value; }
+    }
 
     public float Remaining
     {
@@ -60,7 +72,7 @@ public class yHpgage : MonoBehaviour {
         //デバッグ用
         if (Input.GetMouseButtonDown(0))
         {
-            PlayerDamage(30);
+            //PlayerDamage(30);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -73,12 +85,12 @@ public class yHpgage : MonoBehaviour {
         hpGage = GameObject.Find("Canvas/HPvar/hpGage").GetComponent<Image>();
         redGage = GameObject.Find("Canvas/HPvar/redGage").GetComponent<Image>();
         waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
-        maxHP = hp;
+        PlayerMaxHps = hp;
     }
 
-    public void PlayerDamage(int x)
+    public void PlayerDamage(int x, Collider2D col )
     {
-        if (parent.tag != "enemy")
+        if (col.tag == "enemy")
         {
             StopCoroutine("DamageCoroutine");
             StopCoroutine("ComboEnd");
