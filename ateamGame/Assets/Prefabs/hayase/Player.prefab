@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158252713267410}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4717479722521018}
@@ -163,7 +163,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 3.5, y: 2}
   m_EdgeRadius: 0
 --- !u!96 &96503063050656664
 TrailRenderer:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1218c984c0b6e384e8a279f63071c4f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  underLine: 0.5
+  underLine: 0.3
   HighjumpPower: 0.8
   ZoneInjumpPower: 0.13
   Gravity: 9.8
