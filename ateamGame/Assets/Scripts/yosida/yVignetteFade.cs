@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class yVignetteFade : MonoBehaviour {
     [SerializeField, Header("ビネット")]
-    VignetteAndChromaticAberration vignette;
+    GameObject vignette;
 
     [SerializeField, Header("次のシーンへ")]
     string nextScene;
@@ -31,12 +31,12 @@ public class yVignetteFade : MonoBehaviour {
         set { flgFadeOut = value; }
     }
 
-
+    float delta;
     // Use this for initialization
     void Start () {
         if (vignette == null)
-            vignette = GetComponent<VignetteAndChromaticAberration>();
-        vignette.intensity = 1;
+            vignette = GameObject.Find("Main Camera");
+        delta = 0;
     }
 	
 	// Update is called once per frame
@@ -51,18 +51,19 @@ public class yVignetteFade : MonoBehaviour {
     private void FadeIn()
     {
         print("FadeIn");
-        vignette.intensity = Mathf.Min(1.0f, vignette.intensity -= Time.deltaTime / 2.0f);
+        vignette.GetComponent<VignetteAndChromaticAberration>().intensity -= Time.deltaTime / 2.0f;
 
-        if (vignette.intensity <= min)
+        if (vignette.GetComponent<VignetteAndChromaticAberration>().intensity <= min)
             flgFadeIn = false;
     }
     private void FadeOut()
     {
-        print("FadeOut");
-        vignette.intensity = Mathf.Min(1.0f, vignette.intensity += Time.deltaTime / 2.0f);
+        delta += Time.deltaTime / 4.0f;
+        print(delta);
+        vignette.GetComponent<VignetteAndChromaticAberration>().intensity = delta;
 
-        if (vignette.intensity >= 1.0f)
-            Invoke("Next", 1.0f);
+        if (delta >= 0.99999f) Next();
+            //Invoke("Next", 1.0f);
     }
 
     private void Next()
