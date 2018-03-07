@@ -480,7 +480,7 @@ Prefab:
     - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
         type: 2}
       propertyPath: PlayerReceiveDamage
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc5e4d17901747d4289d5e99af8cced7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vignette: {fileID: 0}
+  vignette: {fileID: 1114609719}
   nextScene: GameClear
   min: 0
 --- !u!4 &1456132165

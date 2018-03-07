@@ -4,8 +4,6 @@
 
 画面外生成
 敵画像,敵当たり判定調整
-敵死なない修正
-音
 
 (主人公　集中すぐ切れる)
 https://maoudamashii.jokersounds.com/
