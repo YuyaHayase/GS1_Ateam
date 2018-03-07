@@ -122,6 +122,11 @@ public class hPlayerMove : MonoBehaviour {
         if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 3.5f;
         transform.position += new Vector3(Axis.x, py, 0);
 
+        float dirx = transform.localScale.x;
+        if (Axis.x < 0) dirx = 1.5f;
+        else if(Axis.x > 0) dirx = -1.5f;
+        transform.localScale = new Vector3(dirx, transform.localScale.y);
+
         // アクシスの調整 右ステック
         float RightX = Input.GetAxis("Horizontal R") * joyRightAxisAccel;
         float RightY = -Input.GetAxis("Vertical R") * joyRightAxisAccel; ;
