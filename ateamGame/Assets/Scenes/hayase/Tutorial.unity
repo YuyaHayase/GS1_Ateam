@@ -1082,6 +1082,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 0}
+  IsPlayMusic: 1
+  SceneName: Main
 --- !u!82 &1690599716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1093,7 +1095,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f3ed42d8d15715d4a9fac81b5b522de7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
