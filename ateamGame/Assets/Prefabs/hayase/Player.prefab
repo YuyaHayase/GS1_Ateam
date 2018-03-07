@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 1670424414697132}
   m_LocalRotation: {x: -0, y: -0, z: 0.38268346, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4632320127924054}
   m_RootOrder: 1
@@ -137,9 +137,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.5}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 1
 --- !u!61 &61612085118257132
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -199,7 +199,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: 28
   m_Time: 0.4
   m_Parameters:
     serializedVersion: 2
@@ -288,7 +288,7 @@ MonoBehaviour:
   Gravity: 9.8
   joyLeftAxisComp: 4
   joyRightAxisAccel: 7
-  PlayerReceiveDamage: 30
+  PlayerReceiveDamage: 10
   KnockBack: 5
 --- !u!212 &212700169776755174
 SpriteRenderer:

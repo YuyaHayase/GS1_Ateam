@@ -462,36 +462,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 61612085118257132, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: PlayerReceiveDamage
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 212946944141538368, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 212700169776755174, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 96503063050656664, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 96503063050656664, guid: 50ee216c09990a54996c7a9b109606c2,
-        type: 2}
-      propertyPath: m_Time
-      value: 0.4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
   m_IsPrefabParent: 0
