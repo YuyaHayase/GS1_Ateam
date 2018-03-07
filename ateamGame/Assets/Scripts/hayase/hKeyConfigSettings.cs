@@ -238,7 +238,9 @@ public class hKeyConfigSettings : MonoBehaviour {
     // 視差効果を使用するか否か
     public void ParallaxIs()
     {
-        ParallaxEffect = (true == ParallaxEffect) ? false : true;
+        ParallaxEffect = GameObject.Find("Parallax Btn").GetComponent<Toggle>().isOn;
+
+        //ParallaxEffect = (false == ParallaxEffect) ? true : false;
         print(ParallaxEffect);
     }
 }

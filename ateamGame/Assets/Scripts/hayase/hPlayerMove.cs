@@ -138,7 +138,14 @@ public class hPlayerMove : MonoBehaviour {
         }
 
         // アクシスの調整 左ステック
-        if (Input.GetAxis("Vertical") > 0.8f) jumping = true;
+        if (Input.GetAxis("Vertical") == 0)
+        {
+            if (Input.GetAxis("The Cross Key UpDown") > 0.8f) jumping = true;
+        }
+        else if(Input.GetAxis("Vertical") > 0.8f)
+        {
+            jumping = true;
+        }
         if (Input.GetAxis("Horizontal") == 0) Axis.x = Input.GetAxis("The Cross Key LeftRight") / joyLeftAxisComp;
         else Axis.x = Input.GetAxis("Horizontal") / joyLeftAxisComp;
         if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 3.5f;
