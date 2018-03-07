@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class yWaveManagement : MonoBehaviour {
     enum topRow : int { ID = 0, Stage, Wave, Pos, Time ,HP};
@@ -34,6 +35,7 @@ public class yWaveManagement : MonoBehaviour {
     yEnemyManager enemyManager;
     yBandFade bandFade;
     yTime _time;
+    yVignetteFade vFade;
 
     public int WaveNumber
     {
@@ -50,6 +52,7 @@ public class yWaveManagement : MonoBehaviour {
         csv = GameObject.Find("Reference").GetComponent<yCsvRender>();
         bandFade = GameObject.Find("Canvas/Band").GetComponent<yBandFade>();
         _time = GameObject.Find("Time").GetComponent<yTime>();
+        vFade = Camera.main.GetComponent<yVignetteFade>();
 
         MaxWave((int)topRow.Wave);//最大Wave取得
         EnemyNumber((int)topRow.Wave);//WaveごとのEnemyの数
@@ -135,6 +138,11 @@ public class yWaveManagement : MonoBehaviour {
         //if (Input.GetKeyDown(KeyCode.Space))
         //    MusicEffectStop();
 
+        if (enemyNumber[2] == 0)
+        {
+            vFade.NextScene = "GameClear";
+            vFade.FlgFadeOut = true;
+        }
 
     }
 
@@ -266,7 +274,7 @@ public class yWaveManagement : MonoBehaviour {
             if (enemyID[i] == enemyType[k].name)
             {
                 boss = Instantiate(enemyType[k], enemyPos[i], Quaternion.identity) as SpriteRenderer;
-                boss.name = enemyID[i] + number;
+                boss.name = enemyID[i];
                 enemyManager = boss.GetComponent<yEnemyManager>();
                 enemyManager.EnemyHP = enemyHP[i];
 
@@ -274,7 +282,7 @@ public class yWaveManagement : MonoBehaviour {
             }
         }
 
-        yield return StartCoroutine("BossPerformanceText");//ボス出現のテキスト
+        //yield return StartCoroutine("BossPerformanceText");//ボス出現のテキスト
         yield break;
     }
 

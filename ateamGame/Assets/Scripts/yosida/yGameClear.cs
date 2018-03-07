@@ -7,6 +7,7 @@ public class yGameClear : MonoBehaviour {
     SpriteRenderer[] gameClear;
     Vector3[] endPos;
     bool flgGameClear = false;
+    bool flgRefrain = false;
 
     public bool FlgGameClear
     {
@@ -25,37 +26,46 @@ public class yGameClear : MonoBehaviour {
             //初期値をendPosに入れる
             endPos[i] = gameClear[i].transform.localPosition;
 
-            gameClear[i].enabled = false;
+            gameClear[i].enabled = true;
         }
 
-
+        StartCoroutine("ImageMove");
     }
 
     // Update is called once per frame
     void Update () {
-        if (flgGameClear)
+        //if (flgGameClear)
+        //{
+        //    for (int i = 0; i < gameClear.Length; i++)
+        //        gameClear[i].enabled = true;
+
+        //    flgGameClear = false;
+
+        //    StartCoroutine("ImageMove");
+        //}
+
+        //if(Input.GetKeyDown(KeyCode.Return))
+        //    flgGameClear = true;
+    }
+
+    IEnumerator Refrain()
+    {
+        while (true)
         {
-            for (int i = 0; i < gameClear.Length; i++)
-                gameClear[i].enabled = true;
-
-            flgGameClear = false;
-
-            StartCoroutine("ImageMove");
-        }
-
-        if(Input.GetKeyDown(KeyCode.Return))
+            yield return new WaitUntil(() => flgRefrain);
             flgGameClear = true;
+            flgRefrain = false;
+        }
     }
 
     IEnumerator ImageMove()
     {
-
-
         for (int i = 0;i < gameClear.Length; i++)
         {
             StartCoroutine(GameClear(gameClear[i], endPos[i],i));
             yield return new WaitForSeconds(0.1f);
         }
+        print("bjdkn");
         yield break;
     }
 
@@ -78,7 +88,6 @@ public class yGameClear : MonoBehaviour {
                 flgWhole[len] = false;
             }
 
-
             if(flgWhole[len])
             {
                 f += 0.2f;
@@ -86,16 +95,18 @@ public class yGameClear : MonoBehaviour {
             else if (flgCount(flgWhole))
             {
                 yield return new WaitForSeconds(1.0f);
-                for (int i = 0; i < flgWhole.Length; i++)
-                    flgWhole[i] = true;
+                break;
             }
             yield return new WaitForEndOfFrame();
         }
+        print("a");
+        flgRefrain = true;
+        yield break;
     }
 
     private bool flgCount(bool[] flgWhole)
     {
-        int number = 0;
+        int number = 1;
         for (int i = 0; i < flgWhole.Length; i++)
         {
             if (flgWhole[i])

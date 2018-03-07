@@ -13,9 +13,13 @@ public class yBlowOff : MonoBehaviour {
     float x, y, angle;
     float magnification;
     int reflect;
+
+    string enemyName;
+
     bool flg = false;
     bool flgAngle = false;
     bool flgBlow = false;
+    bool flgFall = false;
 
     yHpgage hpGage;
     oBase _oBase;
@@ -32,7 +36,9 @@ public class yBlowOff : MonoBehaviour {
 
         //親オブジェクトのBoxCollider2Dを取得してfalseにする(動作を重くしないため)
         box2D = parent.GetComponent<BoxCollider2D>();
-        //box2D.enabled = false;
+
+        enemyName = parent.name.Substring(0, 4);
+        print(enemyName);
     }
 
     // Update is called once per frame
@@ -67,10 +73,21 @@ public class yBlowOff : MonoBehaviour {
         {
             flg = false;
             flgBlow = false;
-            //box2D.enabled = false;
+            box2D.enabled = true;
             Angle();
         }
 
+        if (flgFall && enemyName != "boss")
+        {
+            //落下速度
+            if (hKeyConfig.GetKey("Zone"))
+                parent.transform.Translate(0, -0.2f / 15.0f, 0);
+            else
+                parent.transform.Translate(0, -0.2f, 0);
+
+            if (parent.transform.position.y < 0)
+                flgFall = false;
+        }
 
     }
 
@@ -82,6 +99,8 @@ public class yBlowOff : MonoBehaviour {
         {
             flg = false;
             flgAngle = false;
+            if (parent.transform.position.y > 0)
+                flgFall = true;
         }
     }
 
@@ -109,7 +128,7 @@ public class yBlowOff : MonoBehaviour {
             if (collision.transform.position.x > transform.position.x)
                 angle -= 180;
 
-            if (_tWeakPointParent.FlgWeakness || hpGage.Remaining <= 0.0f)
+            if (_tWeakPointParent.FlgWeakness || hpGage.Remaining <= 0.0f || enemyName != "boss")
             {
                 magnification = 2.0f;
                 particle = Instantiate(blowParticle2, parent.transform.position, Quaternion.identity);
@@ -129,7 +148,7 @@ public class yBlowOff : MonoBehaviour {
 
             flg = true;
             flgBlow = true;
-            //box2D.enabled = true;
+            box2D.enabled = false;
         }
         if(flgBlow)
             Reflect(collision.gameObject.tag);
