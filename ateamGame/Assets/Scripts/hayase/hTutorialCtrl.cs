@@ -14,17 +14,23 @@ public class hTutorialCtrl : MonoBehaviour {
 
     AudioSource aus;
 
+    [SerializeField, Header("音を流すかどうか")]
+    bool IsPlayMusic = true;
+
+    [SerializeField, Header("移動先シーン")]
+    string SceneName = "Main";
+
 	// Use this for initialization
 	void Start () {
         if (Camera == null) Camera = GameObject.Find("Main Camera");
-        aus = GetComponent<AudioSource>();
+        if(IsPlayMusic) aus = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (hKeyConfig.GetKeyDown("Submit") || Input.GetKeyDown(KeyCode.Space))
         {
-            aus.Play();
+            if(IsPlayMusic) aus.Play();
         }
         if (hKeyConfig.GetKey("Submit") || Input.GetKey(KeyCode.Space))
         {
@@ -35,13 +41,13 @@ public class hTutorialCtrl : MonoBehaviour {
         {
             delta = 0.1f;
             sleep = false;
-            if (aus.isPlaying) aus.Stop();
+            if(IsPlayMusic) if (aus.isPlaying) aus.Stop();
         }
 
         if (delta >= 0.999f)
         {
             delta = 0.999f;
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene(SceneName);
         }
         if (sleep) Camera.GetComponent<VignetteAndChromaticAberration>().intensity = delta;
     }
