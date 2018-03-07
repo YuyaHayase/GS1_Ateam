@@ -1160,6 +1160,49 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ef52f7ba630cb4745aa351113bd8434b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1456132163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1456132165}
+  - component: {fileID: 1456132164}
+  m_Layer: 0
+  m_Name: Vignette
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1456132164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456132163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc5e4d17901747d4289d5e99af8cced7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vignette: {fileID: 0}
+  nextScene: GameClear
+  min: 0
+--- !u!4 &1456132165
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1456132163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.119126, y: 2.0619912, z: 2.4023438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1525535687 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4198532078140592, guid: 22efaa2a4bd092246b1e8461e13c10fd,
@@ -1748,6 +1791,10 @@ MonoBehaviour:
   - {fileID: 212920806165880744, guid: d54cf655dc6bbfa4ab4aed20236953f4, type: 2}
   - {fileID: 212471674725193792, guid: ce5495d0cb3708246b96b48fda4bfa54, type: 2}
   - {fileID: 212573031019842260, guid: 6c2562832b0d3874fac784b303b50e26, type: 2}
+  - {fileID: 212598410316382866, guid: e0415c4b433a6844d939e89cabf7d881, type: 2}
+  - {fileID: 212501373185701214, guid: 8d081e8c54e45c44a928a5429d797bc2, type: 2}
+  - {fileID: 212094052368932438, guid: ad9e6d6018b855c4f8b8ca38ffae445e, type: 2}
+  - {fileID: 212227437099460364, guid: cf5ae25664c5bf54b89cf53faa85ce1f, type: 2}
   - {fileID: 0}
 --- !u!4 &2049984452
 Transform:

@@ -52,7 +52,7 @@ public class yWaveManagement : MonoBehaviour {
         csv = GameObject.Find("Reference").GetComponent<yCsvRender>();
         bandFade = GameObject.Find("Canvas/Band").GetComponent<yBandFade>();
         _time = GameObject.Find("Time").GetComponent<yTime>();
-        vFade = Camera.main.GetComponent<yVignetteFade>();
+        vFade = GameObject.Find("Vignette").GetComponent<yVignetteFade>();
 
         MaxWave((int)topRow.Wave);//最大Wave取得
         EnemyNumber((int)topRow.Wave);//WaveごとのEnemyの数
@@ -73,7 +73,7 @@ public class yWaveManagement : MonoBehaviour {
     {
         if(_time.FlgTime)
             time += Time.deltaTime;
-        print(enemyNumber[0]);
+        print(enemyNumber[j]);
 
         if (waveNumber < maxWave)//ボス戦前のWave数まで
         {
@@ -115,6 +115,8 @@ public class yWaveManagement : MonoBehaviour {
             {
                 waveNumber++;
                 time = 0;
+                if(j < maxWave - 1)
+                    bandFade.FlgFadeIn = true;
                 if (j < maxWave - 2)
                 {
                     j++;
@@ -265,7 +267,7 @@ public class yWaveManagement : MonoBehaviour {
         yield return new WaitUntil(() => flgBoss);//flgBossがtrueになったとき
         yield return new WaitForSeconds(1.0f);//1.0秒待つ
 
-        yield return StartCoroutine("BossPerformance");//ボスが出てくる演出
+        //yield return StartCoroutine("BossPerformance");//ボスが出てくる演出
 
         yield return new WaitForSeconds(enemyAppearanceTime[i]);//ボス出現
         SpriteRenderer boss;
