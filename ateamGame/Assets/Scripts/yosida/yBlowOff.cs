@@ -9,11 +9,13 @@ public class yBlowOff : MonoBehaviour {
     GameObject particle;
     GameObject hitParticle;
     GameObject blowParticle2;
+    BoxCollider2D box2D;
     float x, y, angle;
     float magnification;
     int reflect;
     bool flg = false;
     bool flgAngle = false;
+    bool flgBlow = false;
 
     yHpgage hpGage;
     oBase _oBase;
@@ -27,6 +29,10 @@ public class yBlowOff : MonoBehaviour {
         hpGage = parent.transform.Find("EnemyHPgage/HPbar").GetComponent<yHpgage>();
         _oBase = GameObject.Find("Reference").GetComponent<oBase>();
         _tWeakPointParent = GetComponent<tWeakPointParent>();
+
+        //親オブジェクトのBoxCollider2Dを取得してfalseにする(動作を重くしないため)
+        box2D = parent.GetComponent<BoxCollider2D>();
+        //box2D.enabled = false;
     }
 
     // Update is called once per frame
@@ -60,6 +66,8 @@ public class yBlowOff : MonoBehaviour {
         if (flgAngle)
         {
             flg = false;
+            flgBlow = false;
+            //box2D.enabled = false;
             Angle();
         }
 
@@ -95,7 +103,7 @@ public class yBlowOff : MonoBehaviour {
             }
             catch (System.Exception e)
             {
-                print("null");
+
             }
 
             if (collision.transform.position.x > transform.position.x)
@@ -120,10 +128,10 @@ public class yBlowOff : MonoBehaviour {
             x *= magnification;
 
             flg = true;
-
-            //print("入射角" + angle);
+            flgBlow = true;
+            //box2D.enabled = true;
         }
-        else
+        if(flgBlow)
             Reflect(collision.gameObject.tag);
     }
 
@@ -147,17 +155,16 @@ public class yBlowOff : MonoBehaviour {
             case "enemy":
                 break;
             default:
-                //print("入ってる");
                 break;
         }
+
         try
         {
             particle.transform.rotation = Quaternion.Euler(0, 0, angle + 360);
         }
         catch (System.Exception e)
         {
-            print("null");
+
         }
-        //Debug.Log("反射角" + angle);
     }
 }

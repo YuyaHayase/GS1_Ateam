@@ -70,7 +70,7 @@ public class yWaveManagement : MonoBehaviour {
     {
         if(_time.FlgTime)
             time += Time.deltaTime;
-
+        print(enemyNumber[0]);
 
         if (waveNumber < maxWave)//ボス戦前のWave数まで
         {
@@ -78,7 +78,7 @@ public class yWaveManagement : MonoBehaviour {
             {
                 if (time >= enemyAppearanceTime[i])//時間になったら生成
                 {
-                    while (true)
+                    while (true)//同じ時間に敵が出るとき同時生成する
                     {
                         for(int k = 0;k < enemyType.Length; k++)
                         {
@@ -98,7 +98,7 @@ public class yWaveManagement : MonoBehaviour {
 
                         if (i >= wholeNumber)//全ての敵が出現し終えたら(1～3Wave)
                             break;
-                        else if (enemyAppearanceTime[i - 1] == enemyAppearanceTime[i] && number > 0)//今作ったものと次作る秒数が一緒っだったらもう一度
+                        else if (enemyAppearanceTime[i - 1] == enemyAppearanceTime[i] && number > 0)//今作ったものと次作る秒数が一緒だったらもう一度
                             continue;
                         else
                             break;
@@ -281,6 +281,7 @@ public class yWaveManagement : MonoBehaviour {
     IEnumerator BossPerformance()
     {
         Image bossPerformance = GameObject.Find("Performance/Image").GetComponent<Image>();
+
         int i = 0;
         while (i < 3)
         {
