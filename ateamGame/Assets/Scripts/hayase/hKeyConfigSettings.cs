@@ -90,7 +90,7 @@ public class hKeyConfigSettings : MonoBehaviour {
 
         // デバック用の表示
         Debug.Log("JumpButton: " + hKeyConfig.Config["Jump"] + ", ZoneButton: " + hKeyConfig.Config["Zone"]);
-
+        hKeyConfig.Config["Home"] = jsr.GetPlayBtn(hJoyStickReceiver.PlayStationContoller.PSButton);
         hKeyConfig.Config["Submit"] = jsr.GetPlayBtn(JoyStick_Submit);
         SetDisp("JumpBtn", hKeyConfig.Config["Jump"]);
         SetDisp("ZoneBtn", hKeyConfig.Config["Zone"]);

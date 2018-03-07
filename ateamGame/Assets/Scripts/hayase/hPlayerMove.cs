@@ -89,7 +89,11 @@ public class hPlayerMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if(damaged)
+        // 強制終了
+        if (hKeyConfig.GetKeyDown("Home")) SceneManager.LoadScene("Title");
+
+        // ダメージを受けたら、しばらくは無敵時間
+        if (damaged)
         {
             damage_delta += Time.deltaTime;
             if (damage_delta > NotReceiveDamageTime)
@@ -151,6 +155,7 @@ public class hPlayerMove : MonoBehaviour {
         if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 3.5f;
         transform.position += new Vector3(Axis.x, py, 0);
 
+        // プレイヤーの向き
         float dirx = transform.localScale.x;
         if (Axis.x < 0) dirx = 1.5f;
         else if(Axis.x > 0) dirx = -1.5f;
@@ -209,13 +214,14 @@ public class hPlayerMove : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     { 
-        // 
+        // 敵に当たったら
         if(!damaged && col.tag == "enemy")
         {
             // ノックバック
             if (transform.position.x < col.transform.position.x) transform.Translate(new Vector3(-KnockBack, 0, 0));
             else transform.Translate(new Vector3(KnockBack, 0, 0));
 
+            // ダメージを受け、半透明
             damaged = true;
             pChildren.GetComponent<SpriteRenderer>().color = new Color(pChildColor.r, pChildColor.g, pChildColor.b, 0.5f);
 
