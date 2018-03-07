@@ -42,7 +42,7 @@ public class hCameraCtrl : MonoBehaviour {
         hk.Init();
 
         // 視差効果がオンになっているか
-        print(hKeyConfigSettings.ParallaxEffect);
+        //print(hKeyConfigSettings.ParallaxEffect);
         if (false == hKeyConfigSettings.ParallaxEffect)
         {
             GetComponent<VignetteAndChromaticAberration>().enabled = false;
