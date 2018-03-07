@@ -436,7 +436,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
       propertyPath: m_LocalPosition.z
@@ -461,6 +461,21 @@ Prefab:
     - target: {fileID: 4632320127924054, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 61612085118257132, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61612085118257132, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114394853874933526, guid: 50ee216c09990a54996c7a9b109606c2,
+        type: 2}
+      propertyPath: underLine
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 50ee216c09990a54996c7a9b109606c2, type: 2}
@@ -1721,8 +1736,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType:
-  - {fileID: 212279771264687472, guid: 7e9f8c95a3a2b824e8f2978a5f123886, type: 2}
-  - {fileID: 212488885729996928, guid: 1f0b2ea88dfc28d4bae159ac2a8e68df, type: 2}
+  - {fileID: 212853758403681002, guid: db70acc5677f16a42a9aaeaf4c75bff8, type: 2}
+  - {fileID: 212502374722908426, guid: 04dd6cf2bbba840448ae5b0dfb07afb3, type: 2}
+  - {fileID: 212609815152857414, guid: 1be1a3408b51a0f4e93c1ef2cbe7d3bc, type: 2}
+  - {fileID: 212054677003795306, guid: fb06dbdaa55ee654192ed3c17594b055, type: 2}
+  - {fileID: 212920806165880744, guid: d54cf655dc6bbfa4ab4aed20236953f4, type: 2}
+  - {fileID: 212471674725193792, guid: ce5495d0cb3708246b96b48fda4bfa54, type: 2}
+  - {fileID: 212573031019842260, guid: 6c2562832b0d3874fac784b303b50e26, type: 2}
   - {fileID: 0}
 --- !u!4 &2049984452
 Transform:
