@@ -22,6 +22,7 @@ public class yBlowOff : MonoBehaviour {
     bool flgFall = false;
 
     yHpgage hpGage;
+    yCombo combo;
     oBase _oBase;
     tWeakPointParent _tWeakPointParent;
     // Use this for initialization
@@ -31,10 +32,10 @@ public class yBlowOff : MonoBehaviour {
         
         parent = transform.root.gameObject;
         hpGage = parent.transform.Find("EnemyHPgage/HPbar").GetComponent<yHpgage>();
+        combo = GameObject.Find("Combo").GetComponent<yCombo>();
         _oBase = GameObject.Find("Reference").GetComponent<oBase>();
         _tWeakPointParent = GetComponent<tWeakPointParent>();
 
-        //親オブジェクトのBoxCollider2Dを取得してfalseにする(動作を重くしないため)
         box2D = parent.GetComponent<BoxCollider2D>();
 
         enemyName = parent.name.Substring(0, 4);
@@ -108,6 +109,7 @@ public class yBlowOff : MonoBehaviour {
     {
         if (collision.gameObject.tag == "weapon")
         {
+            combo.Combo();
             //x = collision.transform.position.x - transform.position.x;
             //y = collision.transform.position.y - transform.position.y;
             x = transform.position.x - collision.transform.position.x;
@@ -128,7 +130,7 @@ public class yBlowOff : MonoBehaviour {
             if (collision.transform.position.x > transform.position.x)
                 angle -= 180;
 
-            if (_tWeakPointParent.FlgWeakness || hpGage.Remaining <= 0.0f || enemyName != "boss")
+            if (_tWeakPointParent.FlgWeakness || hpGage.Remaining <= 0.0f || (enemyName != "boss" || parent.gameObject.name != "Enemy9"))
             {
                 magnification = 2.0f;
                 particle = Instantiate(blowParticle2, parent.transform.position, Quaternion.identity);

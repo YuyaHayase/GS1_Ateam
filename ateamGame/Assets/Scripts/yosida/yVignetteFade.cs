@@ -59,7 +59,6 @@ public class yVignetteFade : MonoBehaviour {
     private void FadeOut()
     {
         delta += Time.deltaTime / 4.0f;
-        print(delta);
         vignette.GetComponent<VignetteAndChromaticAberration>().intensity = delta;
 
         if (delta >= 0.99999f) Next();

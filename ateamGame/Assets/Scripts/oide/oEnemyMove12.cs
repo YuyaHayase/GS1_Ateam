@@ -39,10 +39,11 @@ public class oEnemyMove12 : MonoBehaviour {
         boss4 = GameObject.Find("boss4");
         obj = GameObject.Find("Reference");//oBaseの入っているオブジェクトを探す
         mother = obj.GetComponent<oBase>();
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         time += Time.deltaTime * mother.enemySpeed;
         if (flg == false && time >= 3.0f)
         {
@@ -98,7 +99,7 @@ public class oEnemyMove12 : MonoBehaviour {
     }
     void att3()
     {
-        transform.Translate(0, 0.3f, 0);
+        boss4.transform.Translate(0, 0.3f, 0);
     }
     void att4()
     {

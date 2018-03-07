@@ -161,11 +161,13 @@ public class yHpgage : MonoBehaviour {
             {
                 if (parent.tag == "deathEnemy")
                 {
+                    print(parent.name);
                     waveManagement.enemyNumber[waveManagement.WaveNumber - 1]--;
                     Destroy(parent.gameObject);
                 }
                 if (parent.tag != "deathEnemy")
                 {
+                    print("原因");
                     vFade.NextScene = "GameOver";
                     vFade.FlgFadeOut = true;
                 }
