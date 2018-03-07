@@ -46,7 +46,7 @@ public class hBackGroundSheep : MonoBehaviour {
 
         // 集中時の減速
         if (hKeyConfig.GetKeyDown("Zone")) anim.speed = 0.5f;
-        if (hKeyConfig.GetKeyUp("Zone")) anim.speed = 1.0f;
+        if (hKeyConfig.GetKeyUp("Zone")||!hPlayerMove.ZoneForce) anim.speed = 1.0f;
 
         // 移動
         transform.Translate(new Vector3(Time.deltaTime * (int)dir, Mathf.Sin(delta) / 32f, 0));

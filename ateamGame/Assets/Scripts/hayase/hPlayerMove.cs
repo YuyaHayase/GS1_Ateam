@@ -58,6 +58,14 @@ public class hPlayerMove : MonoBehaviour {
 
     [SerializeField, Header("無敵時間")]
     float NotReceiveDamageTime = 3f;
+
+    // 集中関係
+    public static bool ZoneForce = true;
+    float ZoneDelta = 0;
+
+    // 集中できる時間
+    float ZoneTime = 1f;
+
     void Awake()
     {
         try
@@ -117,7 +125,7 @@ public class hPlayerMove : MonoBehaviour {
         if (jumping)
         {
             // 集中時ゆっくりになる？やつ
-            if (hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))
+            if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))&& ZoneForce)
             {
                 jumpPower = ZoneInjumpPower;
                 delta += Time.deltaTime / 15.0f;
@@ -152,8 +160,20 @@ public class hPlayerMove : MonoBehaviour {
         }
         if (Input.GetAxis("Horizontal") == 0) Axis.x = Input.GetAxis("The Cross Key LeftRight") / joyLeftAxisComp;
         else Axis.x = Input.GetAxis("Horizontal") / joyLeftAxisComp;
-        if (hKeyConfig.GetKey("Zone")) Axis.x = Axis.x / 3.5f;
+
+        // 集中時移動速度もゆっくり
+        if (hKeyConfig.GetKey("Zone") && ZoneForce) Axis.x = Axis.x / 3.5f;
         transform.position += new Vector3(Axis.x, py, 0);
+
+        if (hKeyConfig.GetKey("Zone") && ZoneForce) {
+            ZoneDelta += Time.deltaTime;
+            if(ZoneDelta > ZoneTime)
+            {
+                ZoneDelta = 0;
+                ZoneForce = false;
+            }
+        }
+        if (hKeyConfig.GetKeyUp("Zone")) ZoneForce = true;
 
         // プレイヤーの向き
         float dirx = transform.localScale.x;
@@ -189,7 +209,9 @@ public class hPlayerMove : MonoBehaviour {
         else _child.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rot * Mathf.Rad2Deg-90);
 
         // 集中時以外武器の判定を消す
-        if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift)) && (RightX != 0 || RightY != 0 )) _child.SetActive(true);
+        if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))
+            && (RightX != 0 || RightY != 0 )
+            && ZoneForce) _child.SetActive(true);
         else _child.SetActive(false);
 
         if (0 >= yhp.PlayerHps) SceneManager.LoadScene("GameOver");

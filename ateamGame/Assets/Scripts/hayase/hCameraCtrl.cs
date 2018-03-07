@@ -24,6 +24,7 @@ public class hCameraCtrl : MonoBehaviour {
     float vAccel = 2.0f;
 
     bool zone = false;
+    bool ZoneDown = false;
 
     // プレイヤー
     [SerializeField, Header("プレイヤー")]
@@ -59,16 +60,26 @@ public class hCameraCtrl : MonoBehaviour {
             try
             {
                 // 集中時
-                if (hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))
+                if ((hKeyConfig.GetKey("Zone") || Input.GetKey(KeyCode.LeftShift))&&hPlayerMove.ZoneForce)
                 {
                     zone = true;
-                    if (Vignette.intensity < vMax) Vignette.intensity += Time.deltaTime / vAccel;
-                    MotionsBlur.blurAmount = 0.8f;
+                    if ((Vignette.intensity < vMax)&&!ZoneDown)
+                    {
+                        if(Vignette.intensity > vMax)ZoneDown = true;
+                        Vignette.intensity += Time.deltaTime / vAccel;
+                        MotionsBlur.blurAmount = 0.8f;
+                    }
+                    else
+                    {
+                        Vignette.intensity -= Time.deltaTime / vAccel;
+                        MotionsBlur.blurAmount = 0.6f;
+                    }
                 }
 
                 // 集中が終わったとき
-                if (hKeyConfig.GetKeyUp("Zone") || Input.GetKeyUp(KeyCode.LeftShift))
+                if ((hKeyConfig.GetKeyUp("Zone") || Input.GetKeyUp(KeyCode.LeftShift))||!hPlayerMove.ZoneForce)
                 {
+                    ZoneDown = false;
                     zone = false;
                     MotionsBlur.blurAmount = 0.6f;
                 }
@@ -77,7 +88,7 @@ public class hCameraCtrl : MonoBehaviour {
                 if (Vignette.intensity > 0.1f && !zone)
                 {
                     Vignette.intensity -= Time.deltaTime / vAccel;
-
+                    ZoneDown = false;
                 }
             }
             catch (Exception e)
