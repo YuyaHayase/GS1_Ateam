@@ -44,11 +44,20 @@ public class hPlayerMove : MonoBehaviour {
     // 吉田スクリプト
     yHpgage yhp;
     [SerializeField, Header("プレイヤーが敵に当たったときの受けるダメージ")]
-    int PlayerReceiveDamage = 30;
+    int PlayerReceiveDamage = 5;
 
     [SerializeField, Header("ノックバック量")]
     float KnockBack = 5f;
 
+    bool damaged = false;
+    float damage_delta = 0;
+
+    [SerializeField, Header("Player子")]
+    GameObject pChildren;
+    Color pChildColor;
+
+    [SerializeField, Header("無敵時間")]
+    float NotReceiveDamageTime = 3f;
     void Awake()
     {
         try
@@ -67,6 +76,8 @@ public class hPlayerMove : MonoBehaviour {
     void Start () {
         // 子オブジェクトの取得
         _child = transform.FindChild("humer").gameObject;
+        if (pChildren == null) pChildren = GameObject.Find("player");
+        pChildColor = pChildren.GetComponent<SpriteRenderer>().color;
 
         jsr = new hJoyStickReceiver();
         kcs = new hKeyConfigSettings();
@@ -78,6 +89,17 @@ public class hPlayerMove : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if(damaged)
+        {
+            damage_delta += Time.deltaTime;
+            if (damage_delta > NotReceiveDamageTime)
+            {
+                damaged = false;
+                damage_delta = 0;
+                pChildren.GetComponent<SpriteRenderer>().color = new Color(pChildColor.r, pChildColor.g, pChildColor.b, 1f);
+            }
+        }
+
         float py = 0;
         /*
         y = Vo*t - (g*t^2)/2
@@ -181,11 +203,14 @@ public class hPlayerMove : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D col)
     { 
         // 
-        if(col.tag == "enemy")
+        if(!damaged && col.tag == "enemy")
         {
             // ノックバック
             if (transform.position.x < col.transform.position.x) transform.Translate(new Vector3(-KnockBack, 0, 0));
             else transform.Translate(new Vector3(KnockBack, 0, 0));
+
+            damaged = true;
+            pChildren.GetComponent<SpriteRenderer>().color = new Color(pChildColor.r, pChildColor.g, pChildColor.b, 0.5f);
 
             // ダメージ
             yhp.PlayerDamage(PlayerReceiveDamage, col);
