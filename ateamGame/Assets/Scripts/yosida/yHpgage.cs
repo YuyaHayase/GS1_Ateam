@@ -28,6 +28,7 @@ public class yHpgage : MonoBehaviour {
 
     yEnemyManager enemyManager;
     yWaveManagement waveManagement;
+    yVignetteFade vFade;
 
     public int PlayerHps
     {
@@ -56,6 +57,7 @@ public class yHpgage : MonoBehaviour {
         parent = transform.root.gameObject;
 
         waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
+        vFade = Camera.main.GetComponent<yVignetteFade>();
 
         //要はEnemyの時
         if (parent.tag == "enemy")
@@ -162,7 +164,11 @@ public class yHpgage : MonoBehaviour {
                     waveManagement.enemyNumber[waveManagement.WaveNumber - 1]--;
                     Destroy(parent.gameObject);
                 }
-
+                if (parent.tag != "deathEnemy")
+                {
+                    vFade.NextScene = "GameOver";
+                    vFade.FlgFadeOut = true;
+                }
             }
             yield return new WaitForSeconds(redGageSpeed);
         }

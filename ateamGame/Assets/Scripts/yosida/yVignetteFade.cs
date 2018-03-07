@@ -13,6 +13,7 @@ public class yVignetteFade : MonoBehaviour {
     [SerializeField, Header("次のシーンへ")]
     string nextScene;
 
+    [SerializeField,Header("ビネットの最小値")]
     float min = 0.324f;
     bool flgFadeIn = true;
     bool flgFadeOut = false;
@@ -36,7 +37,6 @@ public class yVignetteFade : MonoBehaviour {
         if (vignette == null)
             vignette = GetComponent<VignetteAndChromaticAberration>();
         vignette.intensity = 1;
-
     }
 	
 	// Update is called once per frame
