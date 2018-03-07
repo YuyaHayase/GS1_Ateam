@@ -38,10 +38,11 @@ public class oEnemyMove12parts : MonoBehaviour {
         obj = GameObject.Find("Reference");//oBaseの入っているオブジェクトを探す
         mother = obj.GetComponent<oBase>();
         pos = transform.position;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if(boss4.att1Flg == true)//攻撃1
         {
             if(boss4.hundMoveFlg[hund] == false)
@@ -86,12 +87,12 @@ public class oEnemyMove12parts : MonoBehaviour {
     {
         if(boss4.hundatt1Flg[hund] == 1)//一回目
         {
-            transform.position = new Vector3(-10 * i, playerPos.y, 0);
+            transform.position = new Vector3(-30 * i, playerPos.y, 0);
             boss4.hundatt1Flg[hund] = 2;
         }
         else if(boss4.hundatt1Flg[hund] == 2)//二回目
         {
-            transform.position = new Vector3(-10 * i, pos.y, 0);
+            transform.position = new Vector3(-30 * i, pos.y, 0);
             boss4.hundatt1Flg[hund] = 3;
         }
     }

@@ -34,7 +34,7 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
         }
         if(lifeCount >= 4)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
     public void oEnemymove4_pattern1()//移動
@@ -102,9 +102,5 @@ public class oEnemyMove4 : MonoBehaviour {//ランダム移動
             }
             
         }
-    }
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
     }
 }

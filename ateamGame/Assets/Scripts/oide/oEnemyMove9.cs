@@ -94,7 +94,7 @@ public class oEnemyMove9 : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag != "damage")
+        if(other.gameObject.tag != "weapon"&& other.gameObject.tag != "Player")
         {
             enemy9Move.oEnemymove9parts(1);
         }
@@ -144,7 +144,7 @@ public class oEnemyMove9 : MonoBehaviour {
             time = 0;
             count++;
         }
-        if(count >= 20)
+        if(count >= 10)
         {
             oEnemymove9_attstop();
             count = 0;

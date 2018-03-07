@@ -10,6 +10,7 @@ public class yEnemyManager : MonoBehaviour {
     float ySpeed = 0.2f;
 
     bool flg = false;
+    bool flgGrow = false;
 
     yWaveManagement _waveManagement;
 
@@ -23,8 +24,13 @@ public class yEnemyManager : MonoBehaviour {
 	void Start () {
         ground = GameObject.Find("ground");
         _waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
-        if (transform.position.y < 30.0f && transform.position.y > ground.transform.position.y)
+        string enemyName = this.name;
+        if (transform.position.y < 30.0f && transform.position.y > ground.transform.position.y
+            && (enemyName != "Enemy9" && enemyName.Substring(0, 4) != "boss"))
             flg = true;
+
+        if (transform.position.y < 0)
+            flgGrow = true;
     }
 	
 	// Update is called once per frame
@@ -33,21 +39,22 @@ public class yEnemyManager : MonoBehaviour {
         //Destroy処理
         if (transform.position.y < ground.transform.position.y)
         {
-            print("下に行った");
+            //print("下に行った");
+            print(this.name);
             _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
             Destroy(gameObject);
         }
-
-        if (transform.position.y > 30.0f)
+        else if (transform.position.y > 30.0f)
         {
-            print("上に行った");
+            //print("上に行った");
+            print(this.name);
             _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
             Destroy(gameObject);
         }
-
-        if (transform.position.x >= 50.0f || transform.position.x <= -50.0f)
+         else if (transform.position.x >= 50.0f || transform.position.x <= -50.0f)
         {
-            print("左右画面外");
+            //print("左右画面外");
+            print(this.name);
             _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
             Destroy(gameObject);
         }
@@ -55,7 +62,6 @@ public class yEnemyManager : MonoBehaviour {
 
         if (flg)
         {
-            transform.Translate(0, -ySpeed, 0);
             if (hKeyConfig.GetKey("Zone"))
                 transform.Translate(0, -ySpeed / 15.0f, 0);
             else
@@ -64,5 +70,16 @@ public class yEnemyManager : MonoBehaviour {
             if (transform.position.y <= 0)
                 flg = false;
         }
-	}
+
+        if (flgGrow)
+        {
+            if (hKeyConfig.GetKey("Zone"))
+                transform.Translate(0, ySpeed / 15.0f, 0);
+            else
+                transform.Translate(0, ySpeed, 0);
+
+            if (transform.position.y > 0)
+                flgGrow = false;
+        }
+    }
 }

@@ -190,21 +190,16 @@ public class yWaveManagement : MonoBehaviour {
             if (int.Parse(csv.wave[y][(int)topRow.Stage]) == stageNumber)//ステージの確認
             {
                 Vector3 cameraPos = Camera.main.transform.position;
-                float rangeX = Random.Range(-2, 3);
-                float rangeY = Random.Range(-5, 5);
+                float rangeX = Random.Range(-40, 40);
+                float rangeY = Random.Range(0, 29);
                 switch (csv.wave[y][x])
                 {
-                    case "左":
-                        enemyPos[i] = new Vector3(cameraPos.x - 5.0f, cameraPos.y,0);
-                        i++;
-                        break;
-                    case "右":
-                        enemyPos[i] = new Vector3(cameraPos.x + 5.0f, cameraPos.y, 0);
-                        i++;
-                        break;
                     default:
                         string[] pos = csv.wave[y][x].Split('/');
-                        enemyPos[i] = new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), 0);
+                        if (pos[0] == "r")
+                            enemyPos[i] = new Vector3(rangeX, 29.0f, 0);
+                        else
+                            enemyPos[i] = new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), 0);
                         i++;
                         break;
                 }
