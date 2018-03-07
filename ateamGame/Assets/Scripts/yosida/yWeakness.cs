@@ -8,14 +8,14 @@ public class yWeakness : MonoBehaviour {
     [SerializeField, Header("弱点の回転スピード")]
     float rotateSpeed = 1.0f;
 
-    [SerializeField,Header("弱点のMaxサイズ")]
-    float scaleMax = 0.8f;
+    [SerializeField, Header("弱点のMaxサイズ")]
+    float scaleMax = 7.0f;
 
     [SerializeField, Header("弱点のMinサイズ")]
-    float scaleMin = 0.5f;
+    float scaleMin = 4.0f;
 
-    [SerializeField,Header("弱点サイズの変化値")]
-    float sAccel = 2.0f;
+    [SerializeField, Header("弱点サイズの変化値")]
+    float sAccel = 1.0f;
 
     float scaleSize;
     bool flgScaleMax = true;
@@ -30,10 +30,12 @@ public class yWeakness : MonoBehaviour {
 
         scaleSize = scaleMin;
 
+
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 
         if (flgScaleMax)
         {

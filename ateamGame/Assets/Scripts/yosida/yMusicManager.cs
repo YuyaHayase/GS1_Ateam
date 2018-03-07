@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 [Serializable]
 public class yAudioSet
 {
+    public string Name;
     public AudioClip seClip;
     public float volume;
 }
@@ -26,9 +27,6 @@ public class yMusicManager : MonoBehaviour {
             Destroy(gameObject);
     }
     #endregion
-
-    public enum MusicClip { bgm1,bgm2,bgm3};
-    public enum SoundClip { se1,se2,se3};
 
     AudioSource musicSound, soundEffect;
 
@@ -50,13 +48,13 @@ public class yMusicManager : MonoBehaviour {
 	void Update () {
         #region//デバッグ用
         if (Input.GetKeyDown(KeyCode.A))
-            MusicSound((int)MusicClip.bgm1);
+            MusicSound(0);
         if (Input.GetKeyDown(KeyCode.B))
-            Sound((int)SoundClip.se1);
+            Sound(1);
         if (Input.GetKeyDown(KeyCode.C))
-            Sound((int)SoundClip.se2);
+            Sound(2);
         if (Input.GetKeyDown(KeyCode.D))
-            Sound((int)SoundClip.se3);
+            Sound(3);
         if (Input.GetKeyDown(KeyCode.Space))
             MusicEffectStop();
         #endregion
@@ -80,6 +78,7 @@ public class yMusicManager : MonoBehaviour {
 
     public void Sound(int listNum)
     {
+        //BGM流す
         soundEffect.volume = seList[listNum].volume;
         soundEffect.clip = seList[listNum].seClip;
         soundEffect.PlayOneShot(soundEffect.clip);
@@ -87,7 +86,7 @@ public class yMusicManager : MonoBehaviour {
 
     public void MusicEffectStop()
     {
-        musicSound.Stop();
+        musicSound.Stop();//音楽止める
     }
 
 }

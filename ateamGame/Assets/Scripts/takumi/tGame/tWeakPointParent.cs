@@ -13,6 +13,10 @@ public class tWeakPointParent : MonoBehaviour
 
     //吉田プログラム
     bool flgWeakness = false;
+    public int WeakpointDir
+    {
+        get { return weakpointDir; }
+    }
     public bool FlgWeakness
     {
         get { return flgWeakness; }
