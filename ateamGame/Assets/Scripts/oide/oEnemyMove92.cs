@@ -51,7 +51,7 @@ public class oEnemyMove92 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x >= 40 || transform.position.x <= -40)
+        if (transform.position.x >= 40 || transform.position.x <= -40 || transform.position.y >= 30 || transform.position.y <= -2)
         {
             
             transform.position = new Vector3(0, 15, 0);
