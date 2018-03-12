@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212029354970454084}
   - component: {fileID: 61997534491709602}
   - component: {fileID: 114644854415798318}
+  - component: {fileID: 50508198644053650}
   m_Layer: 0
   m_Name: bullet5plus
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50508198644053650
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807268729606820}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61997534491709602
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -78,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d2ed0ce0c709942aafff3d56ac5c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
+  speed: 0.5
 --- !u!212 &212029354970454084
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -113,7 +134,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 701006c23d622394cb9e519dd7bb9122, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85d80dc6842355d41ade575ea56cbb4a, type: 3}
   m_Color: {r: 0.9705882, g: 0.91989315, b: 0.23551036, a: 1}
   m_FlipX: 0
   m_FlipY: 0

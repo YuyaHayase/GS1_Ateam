@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4095362492312792}
   m_Layer: 0
-  m_Name: Boss3
+  m_Name: boss3
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   randomFlg: 0
   bullet: {fileID: 1297869219098790, guid: 55702ca7b2cf4c94d97b541fe4c6c73f, type: 2}
   bullet2: {fileID: 1171649419474310, guid: ff94ae70b373ce74ba11d2402f84e180, type: 2}
-  bullet3: {fileID: 1655852640968906, guid: 9b6ca60fdde718e43af6d1a515b182c2, type: 2}
+  bullet3: {fileID: 0}
 --- !u!212 &212170636951182236
 SpriteRenderer:
   m_ObjectHideFlags: 1
