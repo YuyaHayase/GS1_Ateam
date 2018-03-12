@@ -51,6 +51,12 @@ public class oEnemyMove92 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (transform.position.x >= 40 || transform.position.x <= -40)
+        {
+            
+            transform.position = new Vector3(0, 15, 0);
+            oEnemymove9parts(1);
+        }
         pos = transform.position;
     }
     public void oEnemymove92(int direction)//回転しながら移動(回転は子オブジェクトが担当)
@@ -63,7 +69,8 @@ public class oEnemyMove92 : MonoBehaviour {
                 transform.rotation = Quaternion.Euler(0, 0, angle);//角度を変える
                 flg = true;//角度取得用のフラグをtrueにする
             }
-            transform.Translate(-0.1f, 0, 0);//移動
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.Translate(-0.3f, 0, 0);//移動
         }
     }
     public void oEnemymove9parts(int i)

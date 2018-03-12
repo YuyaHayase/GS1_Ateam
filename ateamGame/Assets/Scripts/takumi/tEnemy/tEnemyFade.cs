@@ -14,15 +14,21 @@ public class tEnemyFade : MonoBehaviour
     yEnemyManager enemyManager;
     yWaveManagement waveManagement;
     GameObject parent;
+    //吉田プログラム
+    SpriteRenderer enemyImage;
 
     void Start()
     {
         spr = GetComponent<SpriteRenderer>();
         spr.color = new Color(spr.color.r,spr.color.g,spr.color.b,alpha);
 
-        enemyManager = transform.parent.GetComponent<yEnemyManager>();
+        enemyManager = GetComponent<yEnemyManager>();
         waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
         parent = transform.root.gameObject;
+
+        //吉田
+        enemyImage = transform.Find("EnemyImage").GetComponent<SpriteRenderer>();
+
     }
 
     void Update()
@@ -31,13 +37,13 @@ public class tEnemyFade : MonoBehaviour
         {
             Debug.Log("aaa");
             alpha += Time.deltaTime * timeXross;
-            spr.color = new Color(spr.color.r, spr.color.g, spr.color.b, alpha);
+            enemyImage.color = new Color(enemyImage.color.r, enemyImage.color.g, enemyImage.color.b, alpha);
             if (alpha >= 1) fadeIn = false;
         }
-        if(transform.position.x <= -50 || transform.position.x >= 50)
-        {//もし吉田が変えた場合はここも変えろ
-            waveManagement.enemyNumber[waveManagement.WaveNumber - 1]--;
-            Destroy(parent.gameObject);
-        }
+        //if(transform.position.x <= -50 || transform.position.x >= 50)
+        //{//もし吉田が変えた場合はここも変えろ
+        //    waveManagement.enemyNumber[waveManagement.WaveNumber - 1]--;
+        //    Destroy(parent.gameObject);
+        //}
     }
 }

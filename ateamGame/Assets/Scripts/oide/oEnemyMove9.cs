@@ -50,7 +50,7 @@ public class oEnemyMove9 : MonoBehaviour {
         {
             StartCoroutine("rotate");
             randomTime += Time.deltaTime * mother.enemySpeed;
-            if (randomTime >= 2)//2秒たったら
+            if (randomTime >= 1)//2秒たったら
             {
                 if (randomFlg == false)
                 {
@@ -73,13 +73,13 @@ public class oEnemyMove9 : MonoBehaviour {
             if (enemy9Move.enemy9MoveFlg == true)//2終了時
             {
                 time += Time.deltaTime;
-                if (time > 4)
+                if (time > 0.5f)
                 {
                     transform.rotation = Quaternion.Euler(0, 0, 0);
                     enemy9Move.transform.rotation = Quaternion.Euler(0, 0, 0);
-                    if (enemy9Move.transform.position.y <= 6)
+                    if (enemy9Move.transform.position.y <= 15)
                     {
-                        enemy9Move.transform.Translate(0.01f * direction * -1 * mother.enemySpeed, 0.03f, 0);
+                        enemy9Move.transform.Translate(0.01f * direction * -1 * mother.enemySpeed, 0.12f, 0);
                     }
                     else
                     {

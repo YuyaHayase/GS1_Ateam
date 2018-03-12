@@ -85,7 +85,7 @@ public class oEnemyMove12parts : MonoBehaviour {
     }
     void OnBecameInvisible()
     {
-        if(boss4.hundatt1Flg[hund] == 1)//一回目
+        if(boss4.hundatt1Flg[hund] == 1 && boss4.b == false)//一回目
         {
             transform.position = new Vector3(-30 * i, playerPos.y, 0);
             boss4.hundatt1Flg[hund] = 2;

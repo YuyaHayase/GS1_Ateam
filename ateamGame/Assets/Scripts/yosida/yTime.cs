@@ -13,6 +13,8 @@ public class yTime : MonoBehaviour {
     float time = 12.00f;
     bool flgTime = false;//falseになると一時停止
 
+    yVignetteFade vFade;
+
     public bool FlgTime
     {
         set { flgTime = value; }
@@ -28,7 +30,7 @@ public class yTime : MonoBehaviour {
         timeImage[2] = GameObject.Find("Time3").GetComponent<Image>();
         timeImage[3] = GameObject.Find("Time2").GetComponent<Image>();
         timeImage[4] = GameObject.Find("Time1").GetComponent<Image>();
-
+        vFade = GameObject.Find("Vignette").GetComponent<yVignetteFade>();
     }
 
     // Update is called once per frame
@@ -70,6 +72,7 @@ public class yTime : MonoBehaviour {
             {
                 timeImage[i].sprite = number[0];
             }
+            vFade.FlgFadeOut = true;
         }
 
         #region//デバッグ用

@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 114433510099537316}
   - component: {fileID: 50912183452808492}
   - component: {fileID: 61230418245626940}
+  - component: {fileID: 114035936059129444}
   m_Layer: 8
   m_Name: Enemy8
   m_TagString: enemy
@@ -514,6 +515,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114035936059129444
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1834620442009546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69404437e5a53a74694ef65044123ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeXross: 1
 --- !u!114 &114145261672690536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -699,6 +712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81106b145d2a3a648997f6aea59a653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAcseel: 1
+  Weakness: 0.2
 --- !u!114 &114642831007758986
 MonoBehaviour:
   m_ObjectHideFlags: 1

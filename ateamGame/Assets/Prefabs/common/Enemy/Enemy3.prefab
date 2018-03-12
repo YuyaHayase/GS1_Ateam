@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 114473475478125916}
   - component: {fileID: 50413262743320866}
   - component: {fileID: 61924494915145738}
+  - component: {fileID: 114156599773225728}
   m_Layer: 8
   m_Name: Enemy3
   m_TagString: enemy
@@ -535,6 +536,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114156599773225728
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1327759892680178}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69404437e5a53a74694ef65044123ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeXross: 0
 --- !u!114 &114161768441958564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -722,6 +735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81106b145d2a3a648997f6aea59a653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAcseel: 2
+  Weakness: 0.2
+  flgBoss: 0
 --- !u!114 &114890633876073928
 MonoBehaviour:
   m_ObjectHideFlags: 1

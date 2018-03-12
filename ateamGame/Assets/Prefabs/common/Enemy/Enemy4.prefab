@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 114222137560135140}
   - component: {fileID: 50891920716176482}
   - component: {fileID: 61282850623457254}
+  - component: {fileID: 114170555509227708}
   m_Layer: 8
   m_Name: Enemy4
   m_TagString: enemy
@@ -377,8 +378,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.37}
-    oldSize: {x: 5.67, y: 2.83}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.73, y: 1.63}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -547,6 +548,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114170555509227708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1550477055237340}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69404437e5a53a74694ef65044123ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeXross: 0
 --- !u!114 &114188501560268598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -706,6 +719,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81106b145d2a3a648997f6aea59a653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAcseel: 2
+  Weakness: 0.2
+  flgBoss: 0
 --- !u!114 &114986226107860580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -811,7 +827,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ea4b315f1a19a284bb94f951810d4951, type: 3}
+  m_Sprite: {fileID: 21300000, guid: beefb69dc69735c43b4666983426e3d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
