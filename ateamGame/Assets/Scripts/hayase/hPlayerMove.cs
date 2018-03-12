@@ -43,6 +43,8 @@ public class hPlayerMove : MonoBehaviour {
 
     // 吉田スクリプト
     yHpgage yhp;
+    [SerializeField, Header("プレイヤーの最大HP")]
+    int PlayerMaxHP = 150;
     [SerializeField, Header("プレイヤーが敵に当たったときの受けるダメージ")]
     int PlayerReceiveDamage = 5;
 
@@ -71,7 +73,7 @@ public class hPlayerMove : MonoBehaviour {
         try
         {
         yhp = GameObject.Find("Canvas/HPvar").GetComponent<yHpgage>();
-        yhp.PlayerHps = 150;
+        yhp.PlayerHps = PlayerMaxHP;
 
         yhp.Acquisition();
         }catch(Exception e)
