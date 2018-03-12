@@ -7,7 +7,9 @@ public class yEnemyManager : MonoBehaviour {
     GameObject ground;
     [SerializeField]
     int enemyHp = 100;
+
     float ySpeed = 0.2f;
+    float destroyTime = 0.0f;
 
     bool flg = false;
     bool flgGrow = false;
@@ -24,7 +26,9 @@ public class yEnemyManager : MonoBehaviour {
 	void Start () {
         ground = GameObject.Find("ground");
         _waveManagement = GameObject.Find("Wave").GetComponent<yWaveManagement>();
+
         string enemyName = this.name;
+
         if (transform.position.y < 30.0f && transform.position.y > ground.transform.position.y
             && (enemyName != "Enemy9" && enemyName.Substring(0, 4) != "boss"))
             flg = true;
@@ -39,28 +43,35 @@ public class yEnemyManager : MonoBehaviour {
         //Destroy処理
         if (transform.position.y < ground.transform.position.y)
         {
-            //print("下に行った");
-            print(this.name);
-            _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
-            Destroy(gameObject);
+            print("下に行った");
+            EnemyDestroy();
         }
         else if (transform.position.y > 30.0f)
         {
-            //print("上に行った");
-            print(this.name);
-            _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
-            Destroy(gameObject);
+            print("上に行った");
+            EnemyDestroy();
         }
-         else if (transform.position.x >= 50.0f || transform.position.x <= -50.0f)
+        else if (transform.position.x >= 50.0f || transform.position.x <= -50.0f)
         {
-            //print("左右画面外");
-            print(this.name);
-            _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
-            Destroy(gameObject);
+            print("左右画面外");
+            EnemyDestroy();
         }
 
+        if (transform.position.x > 40.0f || transform.position.y < -40.0f)
+        {
+            destroyTime += Time.deltaTime;
+            if (destroyTime >= 5.0f)
+            {
+                print("変な位置");
+                EnemyDestroy();
+            }
+        }
+        else
+        {
+            destroyTime = 0.0f;
+        }
 
-        if (flg)
+        if (flg)//敵が上から出現したとき
         {
             if (hKeyConfig.GetKey("Zone"))
                 transform.Translate(0, -ySpeed / 15.0f, 0);
@@ -71,7 +82,7 @@ public class yEnemyManager : MonoBehaviour {
                 flg = false;
         }
 
-        if (flgGrow)
+        if (flgGrow)//敵が地面の中から出現したとき
         {
             if (hKeyConfig.GetKey("Zone"))
                 transform.Translate(0, ySpeed / 15.0f, 0);
@@ -81,5 +92,11 @@ public class yEnemyManager : MonoBehaviour {
             if (transform.position.y > 0)
                 flgGrow = false;
         }
+    }
+
+    private void EnemyDestroy()
+    {
+        _waveManagement.enemyNumber[_waveManagement.WaveNumber - 1]--;
+        Destroy(gameObject);
     }
 }

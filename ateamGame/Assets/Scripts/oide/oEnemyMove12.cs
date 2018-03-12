@@ -32,6 +32,7 @@ public class oEnemyMove12 : MonoBehaviour {
     bool att3Flg = false;
     public bool att4Flg = false;
     public int [] hundatt1Flg = {1,1};
+    public bool b = false;
 	// Use this for initialization
 	void Start () {
         player = GameObject.Find("Player");
@@ -66,7 +67,7 @@ public class oEnemyMove12 : MonoBehaviour {
           else if (flg == true)
           { 
                time = 0.0f;
-               random = Random.Range(1, 5);
+               random = Random.Range(1, 4);
                flg = false;
                posFlg = false;//randomFlgをfalseにする
                hund[0] = false; hund[1] = false;
@@ -99,7 +100,7 @@ public class oEnemyMove12 : MonoBehaviour {
     }
     void att3()
     {
-        boss4.transform.Translate(0, 0.3f, 0);
+        boss4.transform.Translate(-0.3f, 0f, 0);
     }
     void att4()
     {

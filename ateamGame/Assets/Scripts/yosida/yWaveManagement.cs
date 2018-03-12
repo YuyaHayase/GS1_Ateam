@@ -197,7 +197,7 @@ public class yWaveManagement : MonoBehaviour {
                     default:
                         string[] pos = csv.wave[y][x].Split('/');
                         if (pos[0] == "r")
-                            enemyPos[i] = new Vector3(rangeX, 29.0f, 0);
+                            enemyPos[i] = new Vector3(rangeX, float.Parse(pos[1]), 0);
                         else
                             enemyPos[i] = new Vector3(float.Parse(pos[0]), float.Parse(pos[1]), 0);
                         i++;

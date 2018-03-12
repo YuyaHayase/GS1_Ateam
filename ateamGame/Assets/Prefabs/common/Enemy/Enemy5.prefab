@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114027202494533290}
   - component: {fileID: 50720960522630908}
   - component: {fileID: 61061706675133476}
+  - component: {fileID: 114053357725248658}
   m_Layer: 8
   m_Name: Enemy5
   m_TagString: enemy
@@ -526,6 +527,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHp: 100
+--- !u!114 &114053357725248658
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1074647702380722}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69404437e5a53a74694ef65044123ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeXross: 0
 --- !u!114 &114069692257453716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,6 +750,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81106b145d2a3a648997f6aea59a653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAcseel: 2
+  Weakness: 0.2
+  flgBoss: 0
 --- !u!212 &212054677003795306
 SpriteRenderer:
   m_ObjectHideFlags: 1

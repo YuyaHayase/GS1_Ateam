@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114818591038802120}
   - component: {fileID: 50146197823324696}
   - component: {fileID: 61498552082911232}
+  - component: {fileID: 114178185142245426}
   m_Layer: 8
   m_Name: Enemy2plus
   m_TagString: enemy
@@ -542,9 +543,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 1
-  scaleMax: 0.8
-  scaleMin: 0.5
+  scaleMax: 10
+  scaleMin: 8
   sAccel: 2
+--- !u!114 &114178185142245426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132517609736354}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69404437e5a53a74694ef65044123ef3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeXross: 0
 --- !u!114 &114270725415076066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -691,6 +704,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81106b145d2a3a648997f6aea59a653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitAcseel: 2
+  Weakness: 0.2
+  flgBoss: 0
 --- !u!114 &114772835087429742
 MonoBehaviour:
   m_ObjectHideFlags: 1
