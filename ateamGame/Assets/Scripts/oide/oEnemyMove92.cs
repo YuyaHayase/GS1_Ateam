@@ -25,6 +25,7 @@ public class oEnemyMove92 : MonoBehaviour {
 
     GameObject enemy9;
     oEnemyMove9 enemy9Move;
+    GameObject enemy9Manager;
     GameObject obj;//※必須
     oBase mother;//※必須
 
@@ -47,14 +48,20 @@ public class oEnemyMove92 : MonoBehaviour {
         enemy9Move = enemy9.GetComponent<oEnemyMove9>();
         obj = GameObject.Find("Reference");
         mother = obj.GetComponent<oBase>();
+
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (transform.position.x >= 40 || transform.position.x <= -40 || transform.position.y >= 30 || transform.position.y <= -2)
+        if (transform.position.x >= 38 || transform.position.x <= -38 )
         {
             
-            transform.position = new Vector3(0, 15, 0);
+            transform.position = new Vector3(0, 13, 0);
+            oEnemymove9parts(1);
+        }
+        if (transform.position.y >= 24 || transform.position.y <= -2)
+        {
+            transform.position = new Vector3(transform.position.x, 13, 0);
             oEnemymove9parts(1);
         }
         pos = transform.position;

@@ -23,7 +23,7 @@ public class yHpgage : MonoBehaviour {
     [SerializeField, Header("赤ゲージのfillAmountが減っていく値")]
     float redGageDecrease = 0.01f;
 
-    float remaining, remainingRed;
+    float remaining = 1, remainingRed;
 
 
     yEnemyManager enemyManager;
