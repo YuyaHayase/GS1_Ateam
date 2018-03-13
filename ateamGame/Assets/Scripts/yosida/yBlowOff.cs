@@ -28,6 +28,8 @@ public class yBlowOff : MonoBehaviour {
     [SerializeField]
     bool flgBoss = false;
 
+    Vector3 pos;
+
     yHpgage hpGage;
     yCombo combo;
     oBase _oBase;
@@ -56,6 +58,8 @@ public class yBlowOff : MonoBehaviour {
         //親オブジェクトの頭文字４文字(Enemyかbossか)
         enemyName = parent.name.Substring(0, 4);
         print(enemyName);
+
+        pos = parent.transform.position;
     }
 
     // Update is called once per frame
@@ -93,9 +97,9 @@ public class yBlowOff : MonoBehaviour {
         }
 
         //ボス以外の敵が上に吹っ飛び終わったときの落下
-        if (flgFall && !flgBoss)
+        if (flgFall)
         {
-            if (parent.transform.position.y > 0)
+            if (parent.transform.position.y > 0 && !flgBoss)
             {
                 //落下速度
                 if (hKeyConfig.GetKey("Zone"))
@@ -106,7 +110,7 @@ public class yBlowOff : MonoBehaviour {
                 if (parent.transform.position.y < 0)
                     flgFall = false;
             }
-            else
+            else if(parent.transform.position.y < 0 && !flgBoss)
             {
                 print("上がる");
                 //上昇速度
@@ -117,6 +121,18 @@ public class yBlowOff : MonoBehaviour {
 
                 if (parent.transform.position.y > 0)
                     flgFall = false;
+            }
+
+            if (flgBoss)
+            {
+                if(parent.transform.position.y > pos.y)
+                {
+                    parent.transform.Translate(0, -0.2f, 0);
+                }
+                else
+                {
+                    flgFall = false;
+                }
             }
         }
 

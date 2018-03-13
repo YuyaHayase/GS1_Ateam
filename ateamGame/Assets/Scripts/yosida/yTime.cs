@@ -73,6 +73,7 @@ public class yTime : MonoBehaviour {
                 timeImage[i].sprite = number[0];
             }
             vFade.FlgFadeOut = true;
+            vFade.NextScene = "GameOver";
         }
 
         #region//デバッグ用

@@ -34,6 +34,7 @@ public class oEnemyMove9 : MonoBehaviour {
     public float att1time, att2time, atttime3;
     
     float randomTime = 0.0f;bool randomFlg = false;int rnd;
+    yHpgage hpgage;
     // Use this for initialization
     void Start () {
         obj = GameObject.Find("Reference");//oBaseの入っているオブジェクトを探す
@@ -41,13 +42,14 @@ public class oEnemyMove9 : MonoBehaviour {
         enemy9 = GameObject.Find("Enemy9");//oBossBaseの入っているオブジェクトを探す
         enemy9Move = enemy9.GetComponent<oEnemyMove92>();
         boss = obj.GetComponent<oBossBase>();
-
+        hpgage = enemy9.transform.Find("EnemyHPgage/HPbar").GetComponent<yHpgage>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (transform.tag == "enemy")
         {
+            Debug.Log(hpgage.Remaining);
             StartCoroutine("rotate");
             randomTime += Time.deltaTime * mother.enemySpeed;
             if (randomTime >= 1)//2秒たったら
@@ -60,13 +62,35 @@ public class oEnemyMove9 : MonoBehaviour {
                 switch (rnd)
                 {
                     case 1:
-                        oEnemymove9_att1();
+                        if(hpgage.Remaining <= 0.5f)
+                        {
+                            oEnemymove9_att1();
+                        }
+                        else
+                        {
+                            oEnemymove9_att2();
+                        }
+                        
                         break;
                     case 2:
                         oEnemymove9_att2();
                         break;
                     case 3:
-                        oEnemymove9_att3();
+                        if(hpgage.Remaining <= 0.2f)
+                        {
+                            print("悪あがき");
+                            oEnemymove9_att3();
+                        }
+                        else
+                        {
+                            oEnemymove9_att2();
+                        }
+                        break;
+                    case 4:
+                        oEnemymove9_att2();
+                        break;
+                    case 5:
+                        oEnemymove9_att2();
                         break;
                 }
             }
